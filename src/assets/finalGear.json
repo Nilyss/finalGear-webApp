@@ -1,20 +1,34 @@
-[
-  {
-    "images":
-      {
-        "avatarBackground": "https://i.imgur.com/CNpo8Ov.jpg",
-        "avatarLight": "https://i.imgur.com/mxChrur.jpg",
-        "banner": "https://i.imgur.com/ncit83b.jpg",
-        "fullWidth": "https://i.imgur.com/SsRwwaU.jpg",
-        "iconLight": "https://i.imgur.com/RFu6zQl.png",
-        "iconFull": "https://i.imgur.com/5ZbDu65.jpg"
-      },
-    "socialNetwork": {
-      "youtube" : "https://www.youtube.com/@finalgearFF/videos",
-      "twitch": "https://www.twitch.tv/finalgearx",
-      "facebook": "https://www.facebook.com/kal.gear.5/",
-      "twitter": "https://twitter.com/FinalGear8",
-      "discord": "https://discord.com/invite/8GpBTD9q6y"
+{
+  "images": {
+    "avatarBackground": "https://i.imgur.com/CNpo8Ov.jpg",
+    "avatarLight": "https://i.imgur.com/mxChrur.jpg",
+    "banner": "https://i.imgur.com/ncit83b.jpg",
+    "fullWidth": "https://i.imgur.com/SsRwwaU.jpg",
+    "iconLight": "https://i.imgur.com/RFu6zQl.png",
+    "iconFull": "https://i.imgur.com/5ZbDu65.jpg"
+  },
+  "socialNetwork": [
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/@finalgearFF/videos"
+    },
+    {
+      "name": "Twitch",
+      "url": "https://www.twitch.tv/finalgearx"
+    },
+    {
+      "name": "Facebook",
+      "url": "https://www.facebook.com/kal.gear.5/"
+    },
+    {
+      "name": "Twitter",
+      "url": "https://twitter.com/FinalGear8"
+    },
+    { "name": "Instagram",
+      "url": "https://www.instagram.com/final_gear8/" },
+    {
+      "name": "Discord",
+      "url": "https://discord.com/invite/8GpBTD9q6y"
     }
-  }
-]
+  ]
+}

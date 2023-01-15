@@ -30,9 +30,6 @@ export const finalGearReducer = createReducer(
   }))
 )
 
-export function FinalGearInfoReducer(
-  state: FinalGearState | undefined,
-  action: Action
-) {
+export function FinalGearInfoReducer(state: FinalGearState, action: Action) {
   return finalGearReducer(state, action)
 }

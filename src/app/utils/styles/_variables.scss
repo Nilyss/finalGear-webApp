@@ -1,1 +1,14 @@
 $backgroundColor-primary: #2b2a33;
+
+// ********** FONTS **********
+@font-face {
+  font-family: 'FinalFantasy';
+  src: url('../../../assets/fonts/finalf.ttf');
+}
+$fontFamilyFF: 'FinalFantasy';
+
+
+// ********** BREAKPOINTS **********
+$breakpointLaptop: 1366px;
+$breakpointTablet: 1024px;
+$breakpointMobile: 768px;

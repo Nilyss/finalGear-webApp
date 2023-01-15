@@ -23,7 +23,7 @@ import { FinalGearState } from '../../datas/ngrx/controller/finalGear/finalGearR
     <body class="body">
       <app-header></app-header>
       <main class="main">
-        <p>Accueil</p>
+        <p>accueil component works!</p>
       </main>
       <app-footer></app-footer>
     </body>
@@ -33,18 +33,17 @@ import { FinalGearState } from '../../datas/ngrx/controller/finalGear/finalGearR
 export class HomeComponent implements OnInit, OnDestroy {
   subscription: Subscription | undefined
 
-  isFinalGearInfosLoaded: boolean = false
-  finalGearInfo: FinalGear | undefined
+  isFinalGearInfoLoaded: boolean = false
 
   getFinalGearInfos() {
-    if (!this.isFinalGearInfosLoaded) {
+    if (!this.isFinalGearInfoLoaded) {
       this.subscription = this.finalGearService
         .getFinalGearInfos()
         .subscribe((res: FinalGear) => {
           this.store.dispatch(
             FinalGearActions.getFinalGearInfos({ finalGearInfo: res })
           )
-          this.isFinalGearInfosLoaded = true
+          this.isFinalGearInfoLoaded = true
         })
     }
   }

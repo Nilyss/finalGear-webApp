@@ -2,3 +2,117 @@
 @use '../../utils/styles/variables' as variables;
 @use '../../utils/styles/mixins' as mixins;
 @use '../../utils/styles/keyframes' as keyframes;
+
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  min-height: 260px;
+}
+
+// ****** BANNER *****
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.background__imageWrapper {
+  width: 100%;
+}
+
+.background__imageWrapper__image {
+  @media(max-width: variables.$breakpointTablet) {
+    object-position: -450px -20px;
+  }
+  width: 100%;
+  min-height: 260px;
+  object-fit: cover;
+}
+
+// *********** CONTAINER TOP **********
+
+.containerTop {
+  @media(max-width: variables.$breakpointTablet) {
+    padding: 1em;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2em;
+}
+
+// ***** TITLE *****
+
+.containerTop__titleWrapper {
+  color: #f2f2f2;
+  display: flex;
+  flex-flow: column;
+  align-self: flex-start;
+}
+
+.containerTop__titleWrapper__title {
+  font-family: variables.$fontFamilyFF;
+  font-size: 42px;
+  text-shadow: 0 0 10px #000;
+}
+
+.containerTop__titleWrapper__subtitle {}
+
+// ***** SOCIAL NETWORKS *****
+
+.containerTop__socialNetworkWrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  gap: .5em;
+}
+
+.containerTop__socialNetworkWrapper__nav {
+  display: flex;
+}
+
+.containerTop__socialNetworkWrapper__nav__links {
+  @media(max-width: variables.$breakpointTablet) {
+    font-size: 16px;
+    color: #2b2a33;
+  }
+  color: #f2f2f2;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+  &:hover {
+    transition: all 300ms ease-in-out;
+    transform: scale(1.5);
+  }
+}
+
+
+// *********** CONTAINER BOTTOM **********
+
+.containerBottom {
+  background: #2b2a33;
+  padding: 2em;
+}
+
+.containerBottom__appNavWrapper {}
+
+.containerBottom__appNavWrapper__linkWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.containerBottom__appNavWrapper__linkWrapper__link {
+  color: #f2f2f2;
+  font-size: 20px;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline 2px solid #f2f2f2;
+  }
+}

@@ -7,13 +7,12 @@ export class FinalGear {
     iconLight: string
     iconFull: string
   }
-  socialNetwork: {
-    youtube: string
-    twitch: string
-    facebook: string
-    twitter: string
-    discord: string
-  }
+  socialNetwork: [
+    {
+      name: string
+      url: string
+    }
+  ]
   constructor(
     images: {
       avatarBackground: string
@@ -23,13 +22,12 @@ export class FinalGear {
       iconLight: string
       iconFull: string
     },
-    socialNetwork: {
-      youtube: string
-      twitch: string
-      facebook: string
-      twitter: string
-      discord: string
-    }
+    socialNetwork: [
+      {
+        name: string
+        url: string
+      }
+    ]
   ) {
     this.images = images
     this.socialNetwork = socialNetwork
