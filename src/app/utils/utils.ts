@@ -14,13 +14,19 @@ export const httpOptions = {
 }
 
 // ***** ENDPOINTS *****
-const developmentBaseUrl: string = 'http://192.168.1.23:4200/assets/'
+const developmentBaseUrl: string = 'http://192.168.1.23:4200/assets/datas/'
 const productionBaseUrl: string =
-  'https://nilyss.github.io/finalGear-webApp/assets/'
+  'https://nilyss.github.io/finalGear-webApp/assets/datas/'
 
+// ***** FINAL GEAR *****
 export const finalGearUrl = isProduction
   ? productionBaseUrl + 'finalGear.json'
   : developmentBaseUrl + 'finalGear.json'
+
+// ***** YOUTUBE *****
+export const youtubeDatasUrl = isProduction
+  ? productionBaseUrl + 'youtubeDatas.json'
+  : developmentBaseUrl + 'youtubeDatas.json'
 
 // ********** LOGS **********
 export const handleError = (error: Error, errorValue: any) => {

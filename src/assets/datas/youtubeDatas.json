@@ -1,0 +1,45 @@
+[
+  {
+    "playlist": [
+      {
+        "_id": "5a9b4b9b0f1c9d0014a5b0a1",
+        "name": "Crisis Core Réunion - Final Fantasy VII — Twitch",
+        "url": "https://www.youtube.com/watch?v=PETovxw1j40&list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
+        "episodes": [
+          {
+            "name": "CRISIS CORE : FINAL FANTASY VII REUNION #1",
+            "url": "https://youtu.be/PETovxw1j40?list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
+            "duration": "0:50:47",
+            "thumbnail": "https://i.ytimg.com/vi/PETovxw1j40/hqdefault.jpg"
+          },
+          {
+            "name": "CRISIS CORE : FINAL FANTASY VII REUNION #2",
+            "url": "https://youtu.be/hWkN9dGbTD8?list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
+            "duration": "0:35:59",
+            "thumbnail": "https://i.ytimg.com/vi/PETovxw1j40/hqdefault.jpg"
+          },
+          {
+            "name": "CRISIS CORE : FINAL FANTASY VII REUNION #3",
+            "url": "https://youtu.be/YcesXYU_tmU?list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
+            "duration": "1:00:00",
+            "thumbnail": "https://i.ytimg.com/vi/PETovxw1j40/hqdefault.jpg"
+          },
+          {
+            "name": "CRISIS CORE : FINAL FANTASY VII REUNION #4",
+            "url": "https://youtu.be/EYEUBqQhuns?list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
+            "duration": "0:35:17",
+            "thumbnail": "https://i.ytimg.com/vi/PETovxw1j40/hqdefault.jpg"
+          },
+          {
+            "name": "CRISIS CORE : FINAL FANTASY VII REUNION #5",
+            "url": "https://youtu.be/1RfvmKyrw4o?list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
+            "duration": "1:00:00",
+            "thumbnail": "https://i.ytimg.com/vi/PETovxw1j40/hqdefault.jpg"
+          }
+        ]
+      }
+    ]
+  }
+
+
+]

@@ -24,6 +24,7 @@ import { FinalGearState } from '../../datas/ngrx/controller/finalGear/finalGearR
       <app-header></app-header>
       <main class="main">
         <p>accueil component works!</p>
+        <app-final-fantasy></app-final-fantasy>
       </main>
       <app-footer></app-footer>
     </body>
