@@ -1,12 +1,25 @@
+// ********** COLORS **********
+
+// ***** FONT COLORS *****
+$fontColor-primary: #f2f2f2;
+$fontColor-secondary: #2b2a33;
+
+// ***** BACKGROUND COLORS *****
 $backgroundColor-primary: #2b2a33;
+$backgroundColor-secondary: #f2f2f2;
+$componentSeparator: 2px solid #f2f2f2;
+
+// ***** GRADIENT THEME COLORS *****
+$linearGradient: linear-gradient(
+  25deg,
+  #000000 0%,
+  #1a333f 25%,
+  #6dbbc7 50%,
+  #000000 100%
+);
 
 // ********** FONTS **********
-@font-face {
-  font-family: 'FinalFantasy';
-  src: url('../../../assets/fonts/finalf.ttf');
-}
-$fontFamilyFF: 'FinalFantasy';
-
+$fontFamilyFF: 'RunicMTCondensed', 'sans-serif';
 
 // ********** BREAKPOINTS **********
 $breakpointLaptop: 1366px;

@@ -1,18 +1,35 @@
 // ********** UTILS **********
 @use '../../utils/styles/variables' as variables;
 @use '../../utils/styles/mixins' as mixins;
-@use '../../utils/styles/keyframes' as keyframes;
+@import '../../utils/styles/keyframes';
 
 .header {
   position: relative;
   top: 0;
   left: 0;
   min-height: 260px;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 // ****** BANNER *****
 
 .background {
+  @media (max-width: variables.$breakpointLaptop) {
+    &:after {
+      content: '';
+      width: 100%;
+      min-height: 260px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+  }
+  @media (max-width: variables.$breakpointMobile) {
+    position: unset;
+    order: 2;
+  }
   position: absolute;
   top: 0;
   left: 0;
@@ -25,9 +42,21 @@
 }
 
 .background__imageWrapper__image {
-  @media(max-width: variables.$breakpointTablet) {
-    object-position: -450px -20px;
+  @media (max-width: variables.$breakpointTablet) {
+    display: none;
   }
+  width: 100%;
+  min-height: 260px;
+  object-fit: cover;
+}
+.background__imageWrapper__image--tabletAndMobile {
+  @media (min-width: variables.$breakpointTablet) {
+    display: none;
+  }
+  @media (max-width: variables.$breakpointMobile) {
+    object-position: -450px 0;
+  }
+  object-position: -170px 0;
   width: 100%;
   min-height: 260px;
   object-fit: cover;
@@ -36,8 +65,12 @@
 // *********** CONTAINER TOP **********
 
 .containerTop {
-  @media(max-width: variables.$breakpointTablet) {
+  @media (max-width: variables.$breakpointTablet) {
     padding: 1em;
+  }
+  @media (max-width: variables.$breakpointMobile) {
+    flex-flow: column;
+    padding: unset;
   }
   display: flex;
   align-items: center;
@@ -48,28 +81,47 @@
 // ***** TITLE *****
 
 .containerTop__titleWrapper {
-  color: #f2f2f2;
+  @media (max-width: variables.$breakpointTablet) {
+    padding: 0.5em;
+  }
+  @media (max-width: variables.$breakpointMobile) {
+    background: variables.$backgroundColor-primary;
+    border-radius: unset;
+    backdrop-filter: unset;
+    width: 100%;
+    text-align: center;
+    padding: 4em 1em 4em 1em;
+  }
+  color: variables.$fontColor-primary;
   display: flex;
   flex-flow: column;
   align-self: flex-start;
 }
 
 .containerTop__titleWrapper__title {
-  font-family: variables.$fontFamilyFF;
-  font-size: 42px;
-  text-shadow: 0 0 10px #000;
+  @include mixins.titleStyle;
 }
 
-.containerTop__titleWrapper__subtitle {}
+.containerTop__titleWrapper__subtitle {
+  font-size: 14px;
+  margin-top: 1.5em;
+}
 
 // ***** SOCIAL NETWORKS *****
 
 .containerTop__socialNetworkWrapper {
+  @media (max-width: variables.$breakpointMobile) {
+    flex-flow: row;
+    background: variables.$backgroundColor-primary;
+    width: 100%;
+    padding: 0 0 20px 0;
+    border-bottom: variables.$componentSeparator;
+  }
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  gap: .5em;
+  gap: 0.5em;
 }
 
 .containerTop__socialNetworkWrapper__nav {
@@ -77,11 +129,10 @@
 }
 
 .containerTop__socialNetworkWrapper__nav__links {
-  @media(max-width: variables.$breakpointTablet) {
+  @media (max-width: variables.$breakpointTablet) {
     font-size: 16px;
-    color: #2b2a33;
   }
-  color: #f2f2f2;
+  color: variables.$fontColor-primary;
   font-size: 20px;
   cursor: pointer;
   transition: all 300ms ease-in-out;
@@ -91,17 +142,20 @@
   }
 }
 
-
 // *********** CONTAINER BOTTOM **********
 
 .containerBottom {
-  background: #2b2a33;
+  background: variables.$backgroundColor-primary;
   padding: 2em;
 }
 
-.containerBottom__appNavWrapper {}
+.containerBottom__appNavWrapper {
+}
 
 .containerBottom__appNavWrapper__linkWrapper {
+  @media (max-width: variables.$breakpointMobile) {
+    gap: 1em;
+  }
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,10 +163,35 @@
 }
 
 .containerBottom__appNavWrapper__linkWrapper__link {
-  color: #f2f2f2;
+  @media (max-width: variables.$breakpointMobile) {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  color: variables.$fontColor-primary;
   font-size: 20px;
   cursor: pointer;
+  position: relative;
   &:hover {
-    text-decoration: underline 2px solid #f2f2f2;
+    background-image: linear-gradient(
+      -425deg,
+      #000000 0%,
+      #1a333f 29%,
+      #6dbbc7 67%,
+      #c9fcfb 100%
+    );
+    background-clip: border-box;
+    background-size: 200% auto;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 1.2em;
+      left: 0;
+      width: 100%;
+      height: 2.5px;
+      border-radius: 8px;
+      background: variables.$linearGradient;
+    }
   }
 }

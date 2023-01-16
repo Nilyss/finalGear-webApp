@@ -3,6 +3,7 @@ export class FinalGear {
     avatarBackground: string
     avatarLight: string
     banner: string
+    bannerWithoutText: string
     fullWidth: string
     iconLight: string
     iconFull: string
@@ -18,6 +19,7 @@ export class FinalGear {
       avatarBackground: string
       avatarLight: string
       banner: string
+      bannerWithoutText: string
       fullWidth: string
       iconLight: string
       iconFull: string

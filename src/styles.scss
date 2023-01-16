@@ -1,3 +1,26 @@
+@font-face {
+  font-family: 'EngeEtienne';
+  src: url('assets/fonts/EngeEtienne.otf') format('opentype'),
+    url('assets/fonts/EngeEtienne.woff2') format('woff2'),
+    url('assets/fonts/EngeEtienne.woff') format('woff'),
+    url('assets/fonts/EngeEtienne.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Final Fantasy';
+  src: url('assets/fonts/finalf.woff2') format('woff2'),
+    url('assets/fonts/finalf.woff') format('woff'),
+    url('assets/fonts/finalf.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RunicMTCondensed';
+  src: url('assets/fonts/RunicMTCondensed.ttf') format('truetype');
+}
+
 // ********** GLOBAL SCSS FILE **********
 // RESET STYLES
 html,

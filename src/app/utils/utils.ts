@@ -14,8 +14,9 @@ export const httpOptions = {
 }
 
 // ***** ENDPOINTS *****
-const developmentBaseUrl: string = 'http://localhost:4200/assets/'
-const productionBaseUrl: string = ''
+const developmentBaseUrl: string = 'http://192.168.1.23:4200/assets/'
+const productionBaseUrl: string =
+  'https://nilyss.github.io/finalGear-webApp/assets/'
 
 export const finalGearUrl = isProduction
   ? productionBaseUrl + 'finalGear.json'

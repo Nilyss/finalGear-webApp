@@ -25,6 +25,11 @@ import * as BrandIcons from '@fortawesome/free-brands-svg-icons'
             [src]="finalGearImages.banner"
             alt="background image"
           />
+          <img
+            class="background__imageWrapper__image--tabletAndMobile"
+            [src]="finalGearImages.bannerWithoutText"
+            alt="background image"
+          />
         </figure>
       </div>
 

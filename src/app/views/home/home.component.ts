@@ -28,7 +28,7 @@ import { FinalGearState } from '../../datas/ngrx/controller/finalGear/finalGearR
       <app-footer></app-footer>
     </body>
   `,
-  styles: ['.body {min-height: 100vh}'],
+  styles: ['.main {min-height: 34vh}'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
   subscription: Subscription | undefined
