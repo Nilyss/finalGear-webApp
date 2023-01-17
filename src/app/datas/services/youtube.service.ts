@@ -14,9 +14,9 @@ import * as Utils from '../../utils/utils'
 export class YoutubeService {
   youtube: Youtube
 
-  getYoutubePlaylist(): Observable<Youtube['playlists'][]> {
+  getYoutubePlaylist(): Observable<Youtube['playlist'][]> {
     return this.http
-      .get<Youtube['playlists'][]>(Utils.youtubeDatasUrl, Utils.httpOptions)
+      .get<Youtube['playlist'][]>(Utils.youtubeDatasUrl, Utils.httpOptions)
       .pipe(catchError((error) => Utils.handleError(error, error)))
   }
 

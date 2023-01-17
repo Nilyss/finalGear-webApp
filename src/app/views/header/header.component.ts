@@ -5,11 +5,11 @@ import { Subscription } from 'rxjs'
 
 // ********** NGRX **********
 import { Store } from '@ngrx/store'
-import * as FinalGearActions from '../../datas/ngrx/controller/finalGear/finalGearSelector'
+import { FinalGearState } from '../../datas/ngrx/controller/finalGear/finalGearReducer'
+import * as FinalGearSelectors from '../../datas/ngrx/controller/finalGear/finalGearSelector'
 
 // ********** MODELS **********
 import { FinalGear } from '../../datas/models/finalGear'
-import { FinalGearState } from '../../datas/ngrx/controller/finalGear/finalGearReducer'
 
 // ************ ICONS ************
 import * as BrandIcons from '@fortawesome/free-brands-svg-icons'
@@ -118,7 +118,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   getFinalGearInfo() {
     this.subscription = this.store
-      .select(FinalGearActions.selectFinalGearInfo)
+      .select(FinalGearSelectors.selectFinalGearInfo)
       .subscribe((finalGearInfo: FinalGear) => {
         if (!finalGearInfo) {
           return

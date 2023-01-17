@@ -17,7 +17,7 @@ import * as BrandIcons from '@fortawesome/free-brands-svg-icons'
 @Component({
   selector: 'app-footer',
   template: `
-    <footer id="footer" class="footer" data-aos="flip-down">
+    <footer id="footer" class="footer">
       <div class="titleWrapper">
         <h2 class="titleWrapper__title">FINAL GEAR</h2>
       </div>

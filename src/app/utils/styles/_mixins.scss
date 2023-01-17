@@ -6,11 +6,11 @@
   font-family: variables.$fontFamilyFF;
   font-size: 75px;
   background-image: linear-gradient(
-                  -425deg,
-                  #c9fcfb 0%,
-                  #6dbbc7 29%,
-                  #1a333f 67%,
-                  #000000 100%,
+    -425deg,
+    #c9fcfb 0%,
+    #6dbbc7 29%,
+    #1a333f 67%,
+    #000000 100%
   );
   background-clip: border-box;
   background-size: 200% auto;
@@ -20,7 +20,7 @@
   cursor: pointer;
   position: relative;
   text-align: center;
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
   &:after {
     content: '';
     position: absolute;
@@ -31,4 +31,20 @@
     background: variables.$linearGradient;
     border: 1px inset #f2f2f2;
   }
+}
+
+@mixin h2Style {
+  background-image: linear-gradient(
+                  -225deg,
+                  #c9fcfb 0%,
+                  #6dbbc7 29%,
+                  #1a333f 67%,
+                  #000000 100%
+  );
+  background-clip: border-box;
+  background-size: 200% auto;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: 700;
+  font-size: 24px;
 }

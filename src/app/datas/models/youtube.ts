@@ -1,5 +1,5 @@
 export class Youtube {
-  playlists: [
+  playlist: [
     {
       id: string
       name: string
@@ -16,7 +16,7 @@ export class Youtube {
   ]
 
   constructor(
-    playlists: [
+    playlist: [
       {
         id: string
         name: string
@@ -32,6 +32,6 @@ export class Youtube {
       }
     ]
   ) {
-    this.playlists = playlists
+    this.playlist = playlist
   }
 }
