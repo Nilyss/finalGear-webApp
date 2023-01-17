@@ -1,4 +1,197 @@
 // ********** UTILS **********
 @use '../../utils/styles/variables' as variables;
 @use '../../utils/styles/mixins' as mixins;
-@use '../../utils/styles/keyframes' as keyframes;
+@import '../../utils/styles/keyframes';
+
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  min-height: 260px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+// ****** BANNER *****
+
+.background {
+  @media (max-width: variables.$breakpointLaptop) {
+    &:after {
+      content: '';
+      width: 100%;
+      min-height: 260px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+  }
+  @media (max-width: variables.$breakpointMobile) {
+    position: unset;
+    order: 2;
+  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.background__imageWrapper {
+  width: 100%;
+}
+
+.background__imageWrapper__image {
+  @media (max-width: variables.$breakpointTablet) {
+    display: none;
+  }
+  width: 100%;
+  min-height: 260px;
+  object-fit: cover;
+}
+.background__imageWrapper__image--tabletAndMobile {
+  @media (min-width: variables.$breakpointTablet) {
+    display: none;
+  }
+  @media (max-width: variables.$breakpointMobile) {
+    object-position: -450px 0;
+  }
+  object-position: -170px 0;
+  width: 100%;
+  min-height: 260px;
+  object-fit: cover;
+}
+
+// *********** CONTAINER TOP **********
+
+.containerTop {
+  @media (max-width: variables.$breakpointTablet) {
+    padding: 1em;
+  }
+  @media (max-width: variables.$breakpointMobile) {
+    flex-flow: column;
+    padding: unset;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2em;
+}
+
+// ***** TITLE *****
+
+.containerTop__titleWrapper {
+  @media (max-width: variables.$breakpointTablet) {
+    padding: 0.5em;
+  }
+  @media (max-width: variables.$breakpointMobile) {
+    background: variables.$backgroundColor-primary;
+    border-radius: unset;
+    backdrop-filter: unset;
+    width: 100%;
+    text-align: center;
+    padding: 4em 1em 4em 1em;
+  }
+  color: variables.$fontColor-primary;
+  display: flex;
+  flex-flow: column;
+  align-self: flex-start;
+}
+
+.containerTop__titleWrapper__title {
+  @include mixins.titleStyle;
+}
+
+.containerTop__titleWrapper__subtitle {
+  font-size: 14px;
+  margin-top: 1.5em;
+}
+
+// ***** SOCIAL NETWORKS *****
+
+.containerTop__socialNetworkWrapper {
+  @media (max-width: variables.$breakpointMobile) {
+    flex-flow: row;
+    background: variables.$backgroundColor-primary;
+    width: 100%;
+    padding: 0 0 20px 0;
+    border-bottom: variables.$componentSeparator;
+  }
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.containerTop__socialNetworkWrapper__nav {
+  display: flex;
+}
+
+.containerTop__socialNetworkWrapper__nav__links {
+  @media (max-width: variables.$breakpointTablet) {
+    font-size: 16px;
+  }
+  color: variables.$fontColor-primary;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+  &:hover {
+    transition: all 300ms ease-in-out;
+    transform: scale(1.5);
+  }
+}
+
+// *********** CONTAINER BOTTOM **********
+
+.containerBottom {
+  background: variables.$backgroundColor-primary;
+  padding: 2em;
+}
+
+.containerBottom__appNavWrapper {
+}
+
+.containerBottom__appNavWrapper__linkWrapper {
+  @media (max-width: variables.$breakpointMobile) {
+    gap: 1em;
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.containerBottom__appNavWrapper__linkWrapper__link {
+  @media (max-width: variables.$breakpointMobile) {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  color: variables.$fontColor-primary;
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+  &:hover {
+    background-image: linear-gradient(
+      -425deg,
+      #000000 0%,
+      #1a333f 29%,
+      #6dbbc7 67%,
+      #c9fcfb 100%
+    );
+    background-clip: border-box;
+    background-size: 200% auto;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 1.2em;
+      left: 0;
+      width: 100%;
+      height: 2.5px;
+      border-radius: 8px;
+      background: variables.$linearGradient;
+    }
+  }
+}

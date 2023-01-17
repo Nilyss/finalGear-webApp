@@ -1,0 +1,82 @@
+// ********** UTILS **********
+@use '../../utils/styles/variables' as variables;
+@use '../../utils/styles/mixins' as mixins;
+@import '../../utils/styles/keyframes';
+
+.footer {
+  @media (max-width: variables.$breakpointMobile) {
+    padding: 5px;
+  }
+  background: variables.$backgroundColor-primary;
+  color: variables.$fontColor-primary;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  padding: 4em;
+}
+
+// ***** TITLE *****
+
+.titleWrapper {
+  @media (max-width: variables.$breakpointTablet) {
+    padding: 0.5em;
+  }
+  @media (max-width: variables.$breakpointMobile) {
+    background: variables.$backgroundColor-primary;
+    border-radius: unset;
+    backdrop-filter: unset;
+    width: 100%;
+    text-align: center;
+  }
+  color: variables.$fontColor-primary;
+  display: flex;
+  flex-flow: column;
+  align-self: center;
+}
+
+.titleWrapper__title {
+  @include mixins.titleStyle;
+}
+
+// ***** SOCIAL NETWORKS *****
+
+.socialNetworkWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.socialNetworkWrapper__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socialNetworkWrapper__nav__links {
+  color: variables.$fontColor-primary;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+  &:hover {
+    transition: all 300ms ease-in-out;
+    transform: scale(1.5);
+  }
+}
+
+.footer__credential__link {
+  color: #ff8e5e;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// ***** CREDENTIAL *****
+
+.footer__credential {
+  font-size: 14px;
+  margin-top: 2em;
+}

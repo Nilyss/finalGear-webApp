@@ -12,6 +12,7 @@ import { AppComponent } from './app.component'
 // ********** NgRx **********
 import { logMetaReducer } from './datas/ngrx/metaReducers/logs'
 import { FinalGearInfoReducer } from './datas/ngrx/controller/finalGear/finalGearReducer'
+import { YoutubeDatasReducer } from './datas/ngrx/controller/youtube/youtubeReducer'
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,10 @@ import { FinalGearInfoReducer } from './datas/ngrx/controller/finalGear/finalGea
     HttpClientModule,
     HomeModule,
     StoreModule.forRoot(
-      { finalGearInfo: FinalGearInfoReducer },
+      {
+        finalGearInfo: FinalGearInfoReducer,
+        youtubeDatas: YoutubeDatasReducer,
+      },
 
       { metaReducers: [logMetaReducer] }
     ),

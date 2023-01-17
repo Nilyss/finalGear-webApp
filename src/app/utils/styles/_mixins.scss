@@ -1,0 +1,50 @@
+// ********** UTILS **********
+@use './variables' as variables;
+@import '../../utils/styles/keyframes';
+
+@mixin titleStyle {
+  font-family: variables.$fontFamilyFF;
+  font-size: 75px;
+  background-image: linear-gradient(
+    -425deg,
+    #c9fcfb 0%,
+    #6dbbc7 29%,
+    #1a333f 67%,
+    #000000 100%
+  );
+  background-clip: border-box;
+  background-size: 200% auto;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  animation: titleAnimation 3s ease infinite;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  letter-spacing: 0.1em;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 1.1em;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: variables.$linearGradient;
+    border: 1px inset #f2f2f2;
+  }
+}
+
+@mixin h2Style {
+  background-image: linear-gradient(
+                  -225deg,
+                  #c9fcfb 0%,
+                  #6dbbc7 29%,
+                  #1a333f 67%,
+                  #000000 100%
+  );
+  background-clip: border-box;
+  background-size: 200% auto;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: 700;
+  font-size: 24px;
+}

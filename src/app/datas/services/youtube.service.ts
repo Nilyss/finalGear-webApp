@@ -5,19 +5,20 @@ import { HttpClient } from '@angular/common/http'
 import { Observable, catchError } from 'rxjs'
 
 // ********** MODELS **********
-import { FinalGear } from '../models/finalGear'
+import { Youtube } from '../models/youtube'
 
 // ********** UTILS **********
 import * as Utils from '../../utils/utils'
 
 @Injectable({ providedIn: 'root' })
-export class FinalGearService {
-  finalGear: FinalGear
+export class YoutubeService {
+  youtube: Youtube
 
-  getFinalGearInfos(): Observable<FinalGear> {
+  getYoutubePlaylist(): Observable<Youtube['playlist'][]> {
     return this.http
-      .get<FinalGear>(Utils.finalGearUrl, Utils.httpOptions)
+      .get<Youtube['playlist'][]>(Utils.youtubeDatasUrl, Utils.httpOptions)
       .pipe(catchError((error) => Utils.handleError(error, error)))
   }
+
   constructor(private http: HttpClient) {}
 }

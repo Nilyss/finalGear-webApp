@@ -1,5 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 
+// ********** ANIMATIONS **********
+import AOS from 'aos'
+
 // ********** RXJS **********
 import { Subscription } from 'rxjs'
 
@@ -23,30 +26,40 @@ import { FinalGearState } from '../../datas/ngrx/controller/finalGear/finalGearR
     <body class="body">
       <app-header></app-header>
       <main class="main">
-        <p>Accueil</p>
+        <app-final-fantasy></app-final-fantasy>
       </main>
       <app-footer></app-footer>
     </body>
   `,
-  styles: ['.body {min-height: 100vh}'],
+  styles: ['.body{overflow-x: hidden} .main {min-height: 34vh}'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
   subscription: Subscription | undefined
 
-  isFinalGearInfosLoaded: boolean = false
-  finalGearInfo: FinalGear | undefined
+  isFinalGearInfoLoaded: boolean = false
 
   getFinalGearInfos() {
-    if (!this.isFinalGearInfosLoaded) {
+    if (!this.isFinalGearInfoLoaded) {
       this.subscription = this.finalGearService
         .getFinalGearInfos()
         .subscribe((res: FinalGear) => {
           this.store.dispatch(
             FinalGearActions.getFinalGearInfos({ finalGearInfo: res })
           )
-          this.isFinalGearInfosLoaded = true
+          this.isFinalGearInfoLoaded = true
         })
     }
+  }
+
+  initAoS() {
+    AOS.init({
+      offset: 200,
+      duration: 600,
+      easing: 'ease-in-sine',
+      delay: 100,
+    })
+    AOS.refreshHard()
+    AOS.refresh()
   }
 
   constructor(
@@ -55,6 +68,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) {}
   ngOnInit() {
     this.getFinalGearInfos()
+    this.initAoS()
   }
   ngOnDestroy() {
     this.subscription?.unsubscribe()
