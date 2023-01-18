@@ -9,7 +9,7 @@ import * as YoutubeActions from './youtubeAction'
 
 export interface YoutubeState {
   isDataLoaded: boolean
-  youtubePlaylists: Youtube['playlist'][]
+  youtubePlaylists: Youtube[]
 }
 
 export const initialState: YoutubeState = {

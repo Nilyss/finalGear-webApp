@@ -1,132 +1,136 @@
-{
-  "finalFantasy": [
-    {
-      "_id": "5a9b4b9b0f1c9d0014a5b0a1",
-      "name": "Crisis Core Réunion - Final Fantasy VII — Twitch",
-      "url": "https://www.youtube.com/watch?v=PETovxw1j40&list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
-      "episodes": [
-        {
-          "name": "CRISIS CORE : FINAL FANTASY VII REUNION #1",
-          "url": "https://youtu.be/PETovxw1j40?list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
-          "duration": "0:50:47",
-          "thumbnail": "https://i.ytimg.com/vi/PETovxw1j40/hqdefault.jpg"
-        },
-        {
-          "name": "CRISIS CORE : FINAL FANTASY VII REUNION #2",
-          "url": "https://youtu.be/hWkN9dGbTD8?list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
-          "duration": "0:35:59",
-          "thumbnail": "https://i.ytimg.com/vi/hWkN9dGbTD8/hqdefault.jpg"
-        },
-        {
-          "name": "CRISIS CORE : FINAL FANTASY VII REUNION #3",
-          "url": "https://youtu.be/YcesXYU_tmU?list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
-          "duration": "1:00:00",
-          "thumbnail": "https://i.ytimg.com/vi/YcesXYU_tmU/hqdefault.jpg"
-        },
-        {
-          "name": "CRISIS CORE : FINAL FANTASY VII REUNION #4",
-          "url": "https://youtu.be/EYEUBqQhuns?list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
-          "duration": "0:35:17",
-          "thumbnail": "https://i.ytimg.com/vi/EYEUBqQhuns/hqdefault.jpg"
-        },
-        {
-          "name": "CRISIS CORE : FINAL FANTASY VII REUNION #5",
-          "url": "https://youtu.be/1RfvmKyrw4o?list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
-          "duration": "1:00:00",
-          "thumbnail": "https://i.ytimg.com/vi/1RfvmKyrw4o/hqdefault.jpg"
-        }
-      ]
-    },
-    {
-      "_id": "5a9b4b9b0f1c9d0014a5b0a2",
-      "name": "Final Fantasy VII - REBIRTH",
-      "url": "https://www.youtube.com/playlist?list=PLUiG5FHhZshNYj--_C5wRicXVJIIT9QDQ",
-      "episodes": [
-        {
-          "name": "FINAL FANTASY VII REBIRTH | ANALYSE + THÉORIE.",
-          "url": "https://youtu.be/2uiHzslVw5Q?list=PLUiG5FHhZshNYj--_C5wRicXVJIIT9QDQ",
-          "duration": "0:40:07",
-          "thumbnail": "https://i.ytimg.com/vi/2uiHzslVw5Q/hqdefault.jpg"
-        },
-        {
-          "name": "CRISIS CORE REUNION BONNE OU MAUVAISE IDÉE?",
-          "url": "https://youtu.be/BMq5taR8LDU?list=PLUiG5FHhZshNYj--_C5wRicXVJIIT9QDQ",
-          "duration": "0:17:02",
-          "thumbnail": "https://i.ytimg.com/vi/BMq5taR8LDU/hqdefault.jpg"
-        },
-        {
-          "name": "INTERVIEW NOMURA, KITASE FINAL FANTASY VII REBIRTH.",
-          "url": "https://youtu.be/X_SwgooK5Ss?list=PLUiG5FHhZshNYj--_C5wRicXVJIIT9QDQ",
-          "duration": "0:40:07",
-          "thumbnail": "https://i.ytimg.com/vi/X_SwgooK5Ss/hqdefault.jpg"
-        }
-      ]
-    },
-    {
-      "_id": "5a9b4b9b0f1c9d0014a5b0a3",
-      "name": "Let's Play Final Fantasy IV - Pixel Remaster",
-      "url": "https://www.youtube.com/watch?v=dizpRRV93So&list=PLUiG5FHhZshOoWqQWRidgCl71nnAXdu7B",
-      "episodes": [
-        {
-          "name": "LET'S PLAY FINAL FANTASY 4 PIXEL REMASTER #1",
-          "url": "https://youtu.be/dizpRRV93So?list=PLUiG5FHhZshOoWqQWRidgCl71nnAXdu7B",
-          "duration": "0:30:08",
-          "thumbnail": "https://i.ytimg.com/vi/dizpRRV93So/hqdefault.jpg"
-        },
-        {
-          "name": "LET'S PLAY FINAL FANTASY 4 PIXEL REMASTER #2",
-          "url": "https://youtu.be/9XCdyosAfoY?list=PLUiG5FHhZshOoWqQWRidgCl71nnAXdu7B",
-          "duration": "0:37:37",
-          "thumbnail": "https://i.ytimg.com/vi/9XCdyosAfoY/hqdefault.jpg"
-        },
-        {
-          "name": "LET'S PLAY FINAL FANTASY 4 PIXEL REMASTER #3",
-          "url": "https://youtu.be/oUNlk5elnKA?list=PLUiG5FHhZshOoWqQWRidgCl71nnAXdu7B",
-          "duration": "0:51:44",
-          "thumbnail": "https://i.ytimg.com/vi/oUNlk5elnKA/hqdefault.jpg"
-        },
-        {
-          "name": "LET'S PLAY FINAL FANTASY 4 PIXEL REMASTER #4",
-          "url": "https://youtu.be/grHoEozVo0I?list=PLUiG5FHhZshOoWqQWRidgCl71nnAXdu7B",
-          "duration": "0:43:20",
-          "thumbnail": "https://i.ytimg.com/vi/grHoEozVo0I/hqdefault.jpg"
-        },
-        {
-          "name": "LET'S PLAY FINAL FANTASY 4 PIXEL REMASTER #5",
-          "url": "https://youtu.be/RMHtHrXBAdw?list=PLUiG5FHhZshOoWqQWRidgCl71nnAXdu7B",
-          "duration": "0:30:25",
-          "thumbnail": "https://i.ytimg.com/vi/RMHtHrXBAdw/hqdefault.jpg"
-        },
-        {
-          "name": "LET'S PLAY FINAL FANTASY 4 PIXEL REMASTER #6",
-          "url": "https://youtu.be/svaDsm4wcho?list=PLUiG5FHhZshOoWqQWRidgCl71nnAXdu7B",
-          "duration": "0:30:01",
-          "thumbnail": "https://i.ytimg.com/vi/svaDsm4wcho/hqdefault.jpg"
-        },
-        {
-          "name": "LET'S PLAY FINAL FANTASY 4 PIXEL REMASTER FIN",
-          "url": "https://youtu.be/Do5FOUbRhlU?list=PLUiG5FHhZshOoWqQWRidgCl71nnAXdu7B",
-          "duration": "0:55:23",
-          "thumbnail": "https://i.ytimg.com/vi/Do5FOUbRhlU/hqdefault.jpg"
-        }
-      ]
-    }
-  ],
-  "tiers": [
-    {
-      "id": "5a9b4b9b0f1c9d0014a5b0b1",
-      "name": "Tiers",
-      "url": "https://www.youtube.com/watch?v=cG4DalleaWk&list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws",
-      "episodes": [
-        {
-          "name": "TIERS LIST SAGA RESIDENT EVIL",
-          "url": "https://youtu.be/cG4DalleaWk?list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws"
-        },
-        {
-          "name": "MA TIER LIST LEGEND OF ZELDA",
-          "url": "https://youtu.be/B9Agxkwqn-M?list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws"
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "finalFantasy": [
+      {
+        "_id": "5a9b4b9b0f1c9d0014a5b0a1",
+        "name": "Crisis Core Réunion - Final Fantasy VII — Twitch",
+        "url": "https://www.youtube.com/watch?v=PETovxw1j40&list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
+        "episodes": [
+          {
+            "name": "CRISIS CORE : FINAL FANTASY VII REUNION #1",
+            "url": "https://youtu.be/PETovxw1j40?list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
+            "duration": "0:50:47",
+            "thumbnail": "https://i.ytimg.com/vi/PETovxw1j40/hqdefault.jpg"
+          },
+          {
+            "name": "CRISIS CORE : FINAL FANTASY VII REUNION #2",
+            "url": "https://youtu.be/hWkN9dGbTD8?list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
+            "duration": "0:35:59",
+            "thumbnail": "https://i.ytimg.com/vi/hWkN9dGbTD8/hqdefault.jpg"
+          },
+          {
+            "name": "CRISIS CORE : FINAL FANTASY VII REUNION #3",
+            "url": "https://youtu.be/YcesXYU_tmU?list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
+            "duration": "1:00:00",
+            "thumbnail": "https://i.ytimg.com/vi/YcesXYU_tmU/hqdefault.jpg"
+          },
+          {
+            "name": "CRISIS CORE : FINAL FANTASY VII REUNION #4",
+            "url": "https://youtu.be/EYEUBqQhuns?list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
+            "duration": "0:35:17",
+            "thumbnail": "https://i.ytimg.com/vi/EYEUBqQhuns/hqdefault.jpg"
+          },
+          {
+            "name": "CRISIS CORE : FINAL FANTASY VII REUNION #5",
+            "url": "https://youtu.be/1RfvmKyrw4o?list=PLUiG5FHhZshOwAgSC1e8sE3OoSsUsGg0s",
+            "duration": "1:00:00",
+            "thumbnail": "https://i.ytimg.com/vi/1RfvmKyrw4o/hqdefault.jpg"
+          }
+        ]
+      },
+      {
+        "_id": "5a9b4b9b0f1c9d0014a5b0a2",
+        "name": "Final Fantasy VII - REBIRTH",
+        "url": "https://www.youtube.com/playlist?list=PLUiG5FHhZshNYj--_C5wRicXVJIIT9QDQ",
+        "episodes": [
+          {
+            "name": "FINAL FANTASY VII REBIRTH | ANALYSE + THÉORIE.",
+            "url": "https://youtu.be/2uiHzslVw5Q?list=PLUiG5FHhZshNYj--_C5wRicXVJIIT9QDQ",
+            "duration": "0:40:07",
+            "thumbnail": "https://i.ytimg.com/vi/2uiHzslVw5Q/hqdefault.jpg"
+          },
+          {
+            "name": "CRISIS CORE REUNION BONNE OU MAUVAISE IDÉE?",
+            "url": "https://youtu.be/BMq5taR8LDU?list=PLUiG5FHhZshNYj--_C5wRicXVJIIT9QDQ",
+            "duration": "0:17:02",
+            "thumbnail": "https://i.ytimg.com/vi/BMq5taR8LDU/hqdefault.jpg"
+          },
+          {
+            "name": "INTERVIEW NOMURA, KITASE FINAL FANTASY VII REBIRTH.",
+            "url": "https://youtu.be/X_SwgooK5Ss?list=PLUiG5FHhZshNYj--_C5wRicXVJIIT9QDQ",
+            "duration": "0:40:07",
+            "thumbnail": "https://i.ytimg.com/vi/X_SwgooK5Ss/hqdefault.jpg"
+          }
+        ]
+      },
+      {
+        "_id": "5a9b4b9b0f1c9d0014a5b0a3",
+        "name": "Let's Play Final Fantasy IV - Pixel Remaster",
+        "url": "https://www.youtube.com/watch?v=dizpRRV93So&list=PLUiG5FHhZshOoWqQWRidgCl71nnAXdu7B",
+        "episodes": [
+          {
+            "name": "LET'S PLAY FINAL FANTASY 4 PIXEL REMASTER #1",
+            "url": "https://youtu.be/dizpRRV93So?list=PLUiG5FHhZshOoWqQWRidgCl71nnAXdu7B",
+            "duration": "0:30:08",
+            "thumbnail": "https://i.ytimg.com/vi/dizpRRV93So/hqdefault.jpg"
+          },
+          {
+            "name": "LET'S PLAY FINAL FANTASY 4 PIXEL REMASTER #2",
+            "url": "https://youtu.be/9XCdyosAfoY?list=PLUiG5FHhZshOoWqQWRidgCl71nnAXdu7B",
+            "duration": "0:37:37",
+            "thumbnail": "https://i.ytimg.com/vi/9XCdyosAfoY/hqdefault.jpg"
+          },
+          {
+            "name": "LET'S PLAY FINAL FANTASY 4 PIXEL REMASTER #3",
+            "url": "https://youtu.be/oUNlk5elnKA?list=PLUiG5FHhZshOoWqQWRidgCl71nnAXdu7B",
+            "duration": "0:51:44",
+            "thumbnail": "https://i.ytimg.com/vi/oUNlk5elnKA/hqdefault.jpg"
+          },
+          {
+            "name": "LET'S PLAY FINAL FANTASY 4 PIXEL REMASTER #4",
+            "url": "https://youtu.be/grHoEozVo0I?list=PLUiG5FHhZshOoWqQWRidgCl71nnAXdu7B",
+            "duration": "0:43:20",
+            "thumbnail": "https://i.ytimg.com/vi/grHoEozVo0I/hqdefault.jpg"
+          },
+          {
+            "name": "LET'S PLAY FINAL FANTASY 4 PIXEL REMASTER #5",
+            "url": "https://youtu.be/RMHtHrXBAdw?list=PLUiG5FHhZshOoWqQWRidgCl71nnAXdu7B",
+            "duration": "0:30:25",
+            "thumbnail": "https://i.ytimg.com/vi/RMHtHrXBAdw/hqdefault.jpg"
+          },
+          {
+            "name": "LET'S PLAY FINAL FANTASY 4 PIXEL REMASTER #6",
+            "url": "https://youtu.be/svaDsm4wcho?list=PLUiG5FHhZshOoWqQWRidgCl71nnAXdu7B",
+            "duration": "0:30:01",
+            "thumbnail": "https://i.ytimg.com/vi/svaDsm4wcho/hqdefault.jpg"
+          },
+          {
+            "name": "LET'S PLAY FINAL FANTASY 4 PIXEL REMASTER FIN",
+            "url": "https://youtu.be/Do5FOUbRhlU?list=PLUiG5FHhZshOoWqQWRidgCl71nnAXdu7B",
+            "duration": "0:55:23",
+            "thumbnail": "https://i.ytimg.com/vi/Do5FOUbRhlU/hqdefault.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tiers": [
+      {
+        "id": "5a9b4b9b0f1c9d0014a5b0b1",
+        "name": "Tiers",
+        "url": "https://www.youtube.com/watch?v=cG4DalleaWk&list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws",
+        "episodes": [
+          {
+            "name": "TIERS LIST SAGA RESIDENT EVIL",
+            "url": "https://youtu.be/cG4DalleaWk?list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws"
+          },
+          {
+            "name": "MA TIER LIST LEGEND OF ZELDA",
+            "url": "https://youtu.be/B9Agxkwqn-M?list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,5 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 
+// ********** UTILS **********
+import { ComponentToggleService } from '../../utils/services/componentToggle.service'
+
 // ********** ANIMATIONS **********
 import AOS from 'aos'
 
@@ -26,17 +29,26 @@ import { FinalGearState } from '../../datas/ngrx/controller/finalGear/finalGearR
     <body class="body">
       <app-header></app-header>
       <main class="main">
-        <app-final-fantasy></app-final-fantasy>
+        <app-final-fantasy *ngIf="isFinalFantasyVisible"></app-final-fantasy>
+        <app-video-player *ngIf="isVideoPlayerVisible"></app-video-player>
       </main>
       <app-footer></app-footer>
     </body>
   `,
-  styles: ['.body{overflow-x: hidden} .main {min-height: 34vh}'],
+  styles: [
+    '.body{overflow-x: hidden} .main {min-height: 34vh; background-color: #2b2a33}',
+  ],
 })
 export class HomeComponent implements OnInit, OnDestroy {
   subscription: Subscription | undefined
 
   isFinalGearInfoLoaded: boolean = false
+
+  // ********** IS COMPONENT DISPLAYED  **********
+  isFinalFantasyVisible: boolean
+  isVideoPlayerVisible: boolean
+
+  // ********** STORE DATAS FROM HTTP REQ. **********
 
   getFinalGearInfos() {
     if (!this.isFinalGearInfoLoaded) {
@@ -51,6 +63,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
+  // ********** INIT APP ANIMATIONS **********
+
   initAoS() {
     AOS.init({
       offset: 200,
@@ -62,13 +76,38 @@ export class HomeComponent implements OnInit, OnDestroy {
     AOS.refresh()
   }
 
+  // ********** DISPLAY COMPONENTS **********
+
+  finalFantasyVisibility() {
+    this.subscription =
+      this.componentToggleService.currentFinalFantasyComponentVisibility.subscribe(
+        (isVisible: boolean) => {
+          this.isFinalFantasyVisible = isVisible
+        }
+      )
+  }
+
+  videoPlayerVisibility() {
+    this.subscription =
+      this.componentToggleService.currentVideoPlayerComponentVisibility.subscribe(
+        (isVisible: boolean) => {
+          this.isVideoPlayerVisible = isVisible
+        }
+      )
+  }
+
+  // ********** COMPONENT INIT **********
+
   constructor(
     private finalGearService: FinalGearService,
-    private store: Store<{ finalGearInfo: FinalGearState }>
+    private store: Store<{ finalGearInfo: FinalGearState }>,
+    private componentToggleService: ComponentToggleService
   ) {}
   ngOnInit() {
     this.getFinalGearInfos()
     this.initAoS()
+    this.finalFantasyVisibility()
+    this.videoPlayerVisibility()
   }
   ngOnDestroy() {
     this.subscription?.unsubscribe()

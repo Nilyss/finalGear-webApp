@@ -1,5 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 
+// ********** UTILS **********
+import { ComponentToggleService } from '../../utils/services/componentToggle.service'
+
 // ********** RXJS **********
 import { Subscription } from 'rxjs'
 
@@ -84,20 +87,23 @@ import * as BrandIcons from '@fortawesome/free-brands-svg-icons'
       <!-- ********** CONTAINER BOTTOM ********** -->
       <div class="containerBottom">
         <div class="containerBottom__appNavWrapper">
-          <div class="containerBottom__appNavWrapper__linkWrapper">
-            <p class="containerBottom__appNavWrapper__linkWrapper__link">
+          <nav class="containerBottom__appNavWrapper__linkWrapper">
+            <a
+              (click)="toggleFinalFantasy()"
+              class="containerBottom__appNavWrapper__linkWrapper__link"
+            >
               Final Fantasy
-            </p>
-            <p class="containerBottom__appNavWrapper__linkWrapper__link">
+            </a>
+            <a class="containerBottom__appNavWrapper__linkWrapper__link">
               Tales Of
-            </p>
-            <p class="containerBottom__appNavWrapper__linkWrapper__link">
+            </a>
+            <a class="containerBottom__appNavWrapper__linkWrapper__link">
               Metal Gear
-            </p>
-            <p class="containerBottom__appNavWrapper__linkWrapper__link">
+            </a>
+            <a class="containerBottom__appNavWrapper__linkWrapper__link">
               Mangas
-            </p>
-          </div>
+            </a>
+          </nav>
         </div>
       </div>
     </header>
@@ -109,6 +115,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   finalGearImages: FinalGear['images']
   finalGearSocials: FinalGear['socialNetwork']
 
+  // ************ ICONS ************
+
   youtubeIcon = BrandIcons.faYoutube
   twitchIcon = BrandIcons.faTwitch
   facebookIcon = BrandIcons.faFacebook
@@ -116,6 +124,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   instagramIcon = BrandIcons.faInstagram
   discordIcon = BrandIcons.faDiscord
 
+  // ********** GET DATAS FROM NGRX STORE **********
   getFinalGearInfo() {
     this.subscription = this.store
       .select(FinalGearSelectors.selectFinalGearInfo)
@@ -128,7 +137,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
       })
   }
 
-  constructor(private store: Store<{ finalGearInfo: FinalGearState }>) {}
+  // ********** TOGGLE **********
+  toggleFinalFantasy() {
+    this.componentToggleService.toggleFinalFantasyComponent()
+    this.componentToggleService.toggleVideoPlayerComponentOff()
+  }
+
+  // ********** INIT COMPONENT **********
+
+  constructor(
+    private store: Store<{ finalGearInfo: FinalGearState }>,
+    private componentToggleService: ComponentToggleService
+  ) {}
   ngOnInit() {
     this.getFinalGearInfo()
   }

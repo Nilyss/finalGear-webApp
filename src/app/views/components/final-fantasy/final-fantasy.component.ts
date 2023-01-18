@@ -1,5 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 
+// ********** UTILS **********
+import { ComponentToggleService } from '../../../utils/services/componentToggle.service'
+
 // ********** RXJS **********
 import { Subscription } from 'rxjs'
 
@@ -21,12 +24,21 @@ import { YoutubeState } from '../../../datas/ngrx/controller/youtube/youtubeRedu
   selector: 'app-final-fantasy',
   template: `
     <section class="section">
-      <div *ngIf="youtubePlaylists" class="finalFantasy" data-aos="slide-right">
+      <div
+        *ngIf="finalFantasyPlaylists"
+        class="finalFantasy"
+        data-aos="slide-right"
+      >
         <ul
-          *ngFor="let playlist of youtubePlaylists"
+          *ngFor="let playlist of finalFantasyPlaylists"
           class="finalFantasy__playlistsWrapper"
         >
-          <li class="finalFantasy__playlistsWrapper__playlist">
+          <li
+            (click)="
+              goToVideoPlayer(playlist['_id'], playlistIndex, 'finalFantasy')
+            "
+            class="finalFantasy__playlistsWrapper__playlist"
+          >
             <h2 class="finalFantasy__playlistsWrapper__playlist__title">
               {{ playlist['name'] }}
             </h2>
@@ -52,14 +64,15 @@ import { YoutubeState } from '../../../datas/ngrx/controller/youtube/youtubeRedu
 export class FinalFantasyComponent implements OnInit, OnDestroy {
   subscription: Subscription | undefined
 
-  youtubePlaylists: Youtube['playlist'][]
+  finalFantasyPlaylists: Youtube[] | undefined
+  playlistIndex: number
   isYoutubePlaylistsLoaded: boolean = false
 
   getYoutubePlaylists() {
     if (!this.isYoutubePlaylistsLoaded) {
       this.subscription = this.youtubeService
         .getYoutubePlaylist()
-        .subscribe((res: Youtube['playlist'][]) => {
+        .subscribe((res: Youtube[]) => {
           this.store.dispatch(
             YoutubeActions.getYoutubePlaylists({ youtubePlaylists: res })
           )
@@ -70,17 +83,24 @@ export class FinalFantasyComponent implements OnInit, OnDestroy {
     // get Final Fantasy playlists from ngrx store
     this.subscription = this.store
       .select(YoutubeSelectors.selectYoutubePlaylist)
-      .subscribe((res: Youtube['playlist'][]) => {
+      .subscribe((res: Youtube[]) => {
         if (!res) {
           return
         }
-        this.youtubePlaylists = res['finalFantasy']
+        this.finalFantasyPlaylists = res[0]['finalFantasy']
+        this.playlistIndex = 0
       })
+  }
+
+  goToVideoPlayer(id: string, index: number, name: string) {
+    this.componentToggleService.toggleFinalFantasyComponent()
+    this.componentToggleService.toggleVideoPlayerComponentOn(id, index, name)
   }
 
   constructor(
     private youtubeService: YoutubeService,
-    private store: Store<{ youtubeDatas: YoutubeState }>
+    private store: Store<{ youtubeDatas: YoutubeState }>,
+    private componentToggleService: ComponentToggleService
   ) {}
 
   ngOnInit() {

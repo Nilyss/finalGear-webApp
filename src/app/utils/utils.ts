@@ -14,7 +14,9 @@ export const httpOptions = {
 }
 
 // ***** ENDPOINTS *****
-const developmentBaseUrl: string = 'http://192.168.1.23:4200/assets/datas/'
+// localIpAddress: string = 'http://192.168.1.23:4200 // FOR MOBILE TESTING
+
+const developmentBaseUrl: string = 'http://localhost:4200/assets/datas/'
 const productionBaseUrl: string =
   'https://nilyss.github.io/finalGear-webApp/assets/datas/'
 

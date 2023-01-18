@@ -8,6 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { HeaderComponent } from '../header/header.component'
 import { HomeComponent } from './home.component'
 import { FinalFantasyComponent } from '../components/final-fantasy/final-fantasy.component'
+import { VideoPlayerComponent } from '../components/video-player/video-player.component'
 import { FooterComponent } from '../footer/footer.component'
 
 const homeRoutes: Routes = [{ path: 'accueil', component: HomeComponent }]
@@ -17,6 +18,7 @@ const homeRoutes: Routes = [{ path: 'accueil', component: HomeComponent }]
     HeaderComponent,
     HomeComponent,
     FinalFantasyComponent,
+    VideoPlayerComponent,
     FooterComponent,
   ],
   imports: [CommonModule, RouterModule.forChild(homeRoutes), FontAwesomeModule],
