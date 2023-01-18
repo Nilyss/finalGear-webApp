@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
+import { DomSanitizer } from '@angular/platform-browser'
 
 // ********** RXJS **********
 import { Subscription } from 'rxjs'
@@ -21,8 +22,15 @@ import { ComponentToggleService } from '../../../utils/services/componentToggle.
       <div class="titleWrapper">
         <h2 class="title">{{ requestedPlaylist['name'] }}</h2>
       </div>
-      <div *ngFor="let episode of requestedPlaylist['episodes']">
+      <div *ngFor="let episode of requestedPlaylist['episodes']; let i = index">
         <p>{{ episode['name'] }}</p>
+        <div *ngIf="safeUrls[i]" [hidden]="!safeUrls[i]" class="youtubeWrapper">
+          <iframe
+            class="youtubeWrapper__youtube"
+            [src]="safeUrls[i]"
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
     </section>
   `,
@@ -42,6 +50,10 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
   requestedVideo: string | undefined
 
   requestedPlaylist: Youtube | undefined
+
+  embedId: string | undefined
+
+  safeUrls = []
 
   // ***** GET REQUESTED ID  *****
 
@@ -75,16 +87,31 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
     }
   }
 
+  getEmbedUrl() {
+    if (!this.requestedPlaylist) return
+    this.requestedPlaylist['episodes'].forEach((episode) => {
+      this.requestedVideo = episode['url']
+      this.embedId = this.requestedVideo?.split('/').pop()
+      const URL = 'https://www.youtube.com/embed/' + this.embedId
+      const safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(URL)
+      console.log('safe url =>', safeUrl)
+      this.safeUrls.push(safeUrl)
+      console.log('safe urls =>', this.safeUrls)
+    })
+  }
+
   // ********** INIT COMPONENT  **********
 
   constructor(
     private store: Store<{ youtubeDatas: YoutubeState }>,
-    private componentToggleService: ComponentToggleService
+    private componentToggleService: ComponentToggleService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {
     this.getRequestedVideoOrPlaylist()
     this.getRequestedVideo()
+    this.getEmbedUrl()
   }
 
   ngOnDestroy() {
