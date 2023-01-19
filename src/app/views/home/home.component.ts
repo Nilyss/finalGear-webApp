@@ -33,6 +33,7 @@ import { FinalGearState } from '../../datas/ngrx/controller/finalGear/finalGearR
         <app-video-player *ngIf="isVideoPlayerVisible"></app-video-player>
       </main>
       <app-footer></app-footer>
+      <app-back-to-top></app-back-to-top>
     </body>
   `,
   styles: [

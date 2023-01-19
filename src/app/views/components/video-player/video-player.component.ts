@@ -18,23 +18,49 @@ import { ComponentToggleService } from '../../../utils/services/componentToggle.
 @Component({
   selector: 'app-video-player',
   template: `
-    <section>
-      <div class="titleWrapper">
-        <h2 class="title">{{ requestedPlaylist['name'] }}</h2>
-      </div>
-      <div *ngFor="let episode of requestedPlaylist['episodes']; let i = index">
-        <p>{{ episode['name'] }}</p>
-        <div *ngIf="safeUrls[i]" [hidden]="!safeUrls[i]" class="youtubeWrapper">
-          <iframe
-            class="youtubeWrapper__youtube"
-            [src]="safeUrls[i]"
-            allowfullscreen
-          ></iframe>
+    <section class="section">
+      <div class="youtubePlayer" data-aos="slide-left">
+        <div class="youtubePlayer__titleWrapper">
+          <h2 class="youtubePlayer__title">{{ requestedPlaylist['name'] }}</h2>
         </div>
+        <ul class="youtubePlayer__episodeWrapper">
+          <li
+            *ngFor="let episode of requestedPlaylist['episodes']; let i = index"
+            class="youtubePlayer__episodeWrapper__episode"
+          >
+            <div class="youtubePlayer__episodeWrapper__episode__titleWrapper">
+              <p
+                class="youtubePlayer__episodeWrapper__episode__titleWrapper__title"
+              >
+                {{ episode['name'] }}
+              </p>
+            </div>
+            <div
+              *ngIf="safeUrls[i]"
+              [hidden]="!safeUrls[i]"
+              class="youtubePlayer__episodeWrapper__episode__playerWrapper"
+            >
+              <iframe
+                class="youtubePlayer__episodeWrapper__episode__playerWrapper__player"
+                [src]="safeUrls[i]"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div
+              class="youtubePlayer__episodeWrapper__episode__durationWrapper"
+            >
+              <p
+                class="youtubePlayer__episodeWrapper__episode__durationWrapper__duration"
+              >
+                Durée de la vidéo : {{ episode['duration'] }}
+              </p>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
   `,
-  styles: [],
+  styleUrls: ['./video-player.component.scss'],
 })
 export class VideoPlayerComponent implements OnInit, OnDestroy {
   subscription: Subscription | undefined
