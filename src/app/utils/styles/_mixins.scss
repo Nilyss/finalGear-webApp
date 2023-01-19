@@ -48,3 +48,17 @@
   font-weight: 700;
   font-size: 24px;
 }
+
+@mixin sectionStyle {
+  @media(max-width: variables.$breakpointLaptop) {
+    padding: 1em;
+  }
+  @media(max-width: variables.$breakpointMobile) {
+    margin-top: -1em;
+  }
+  padding: 2em;
+  border-top: variables.$componentSeparator;
+  border-bottom: variables.$componentSeparator;
+  background: lighten(variables.$backgroundColor-primary, 5%);
+  min-height: 34vh;
+}

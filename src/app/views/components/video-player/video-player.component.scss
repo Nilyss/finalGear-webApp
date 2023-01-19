@@ -1,0 +1,67 @@
+// ********** UTILS **********
+@use '../../../utils/styles/variables' as variables;
+@use '../../../utils/styles/mixins' as mixins;
+@import '../../../utils/styles/keyframes';
+
+.section {
+  @include mixins.sectionStyle;
+}
+
+.youtubePlayer__titleWrapper {
+  @include mixins.h2Style;
+  margin-bottom: 2em;
+}
+
+.youtubePlayer__title {
+  @media (max-width: variables.$breakpointMobile) {
+    font-size: 24px;
+  }
+  font-size: 32px;
+}
+
+.youtubePlayer__episodeWrapper {
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+}
+
+.youtubePlayer__episodeWrapper__episode {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.youtubePlayer__episodeWrapper__episode__titleWrapper {
+}
+
+.youtubePlayer__episodeWrapper__episode__titleWrapper__title {
+  color: variables.$fontColor-primary;
+}
+
+.youtubePlayer__episodeWrapper__episode__playerWrapper {
+  @media (max-width: variables.$breakpointMobile) {
+    width: 300px;
+    height: 170px;
+  }
+  width: 600px;
+  height: 330px;
+}
+
+.youtubePlayer__episodeWrapper__episode__playerWrapper__player {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.youtubePlayer__episodeWrapper__episode__durationWrapper {
+}
+
+.youtubePlayer__episodeWrapper__episode__durationWrapper__duration {
+  color: variables.$fontColor-primary;
+}
