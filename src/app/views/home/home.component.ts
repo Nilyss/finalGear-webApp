@@ -29,6 +29,7 @@ import { FinalGearState } from '../../datas/ngrx/controller/finalGear/finalGearR
     <body class="body">
       <app-header></app-header>
       <main class="main">
+        <app-landing *ngIf="isLandingVisible"></app-landing>
         <app-final-fantasy *ngIf="isFinalFantasyVisible"></app-final-fantasy>
         <app-video-player *ngIf="isVideoPlayerVisible"></app-video-player>
       </main>
@@ -46,6 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   isFinalGearInfoLoaded: boolean = false
 
   // ********** IS COMPONENT DISPLAYED  **********
+  isLandingVisible: boolean
   isFinalFantasyVisible: boolean
   isVideoPlayerVisible: boolean
 
@@ -79,6 +81,15 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   // ********** DISPLAY COMPONENTS **********
 
+  landingVisibility() {
+    this.subscription =
+      this.componentToggleService.currentLandingComponentVisibility.subscribe(
+        (isVisible: boolean) => {
+          this.isLandingVisible = isVisible
+        }
+      )
+  }
+
   finalFantasyVisibility() {
     this.subscription =
       this.componentToggleService.currentFinalFantasyComponentVisibility.subscribe(
@@ -107,6 +118,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getFinalGearInfos()
     this.initAoS()
+    this.landingVisibility()
     this.finalFantasyVisibility()
     this.videoPlayerVisibility()
   }

@@ -6,7 +6,7 @@ import { Component, HostListener } from '@angular/core'
     <div class="back-to-topWrapper">
       <div
         routerLink=""
-        fragment="home"
+        fragment="accueil"
         title="Haut de page"
         (click)="goToTop()"
         class="backToTopWrapper__backToTop material-symbols-outlined"

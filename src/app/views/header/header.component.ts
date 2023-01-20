@@ -40,7 +40,12 @@ import * as BrandIcons from '@fortawesome/free-brands-svg-icons'
 
       <div class="containerTop">
         <div class="containerTop__titleWrapper">
-          <h1 class="containerTop__titleWrapper__title">FINAL GEAR</h1>
+          <h1
+            (click)="toggleLanding(true)"
+            class="containerTop__titleWrapper__title"
+          >
+            FINAL GEAR
+          </h1>
           <p class="containerTop__titleWrapper__subtitle">
             Final Fantasy, Tales of, Metal Gear, Mangas ...
           </p>
@@ -89,7 +94,13 @@ import * as BrandIcons from '@fortawesome/free-brands-svg-icons'
         <div class="containerBottom__appNavWrapper">
           <nav class="containerBottom__appNavWrapper__linkWrapper">
             <a
-              (click)="toggleFinalFantasy()"
+              (click)="toggleLanding(true)"
+              class="containerBottom__appNavWrapper__linkWrapper__link"
+            >
+              Accueil
+            </a>
+            <a
+              (click)="toggleFinalFantasy(true)"
               class="containerBottom__appNavWrapper__linkWrapper__link"
             >
               Final Fantasy
@@ -138,8 +149,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   // ********** TOGGLE **********
-  toggleFinalFantasy() {
-    this.componentToggleService.toggleFinalFantasyComponent()
+  toggleLanding(boolean?: boolean) {
+    this.componentToggleService.toggleLandingComponent(boolean)
+    this.componentToggleService.toggleFinalFantasyComponent(false)
+    this.componentToggleService.toggleVideoPlayerComponentOff()
+  }
+
+  toggleFinalFantasy(boolean?: boolean) {
+    this.componentToggleService.toggleLandingComponent(false)
+    this.componentToggleService.toggleFinalFantasyComponent(boolean)
     this.componentToggleService.toggleVideoPlayerComponentOff()
   }
 

@@ -5,12 +5,33 @@ import { BehaviorSubject } from 'rxjs'
 
 @Injectable({ providedIn: 'root' })
 export class ComponentToggleService {
+  // ********** LANDING COMPONENT  **********
+  private isLandingComponentVisible = new BehaviorSubject<boolean>(true)
+  currentLandingComponentVisibility =
+    this.isLandingComponentVisible.asObservable()
+
+  toggleLandingComponent(boolean?: boolean) {
+    if (boolean === false) {
+      return this.isLandingComponentVisible.next(false)
+    }
+    if (boolean === true) {
+      return this.isLandingComponentVisible.next(true)
+    }
+    this.isLandingComponentVisible.next(!this.isLandingComponentVisible.value)
+  }
+
   // ********** FINAL FANTASY COMPONENT **********
   private isFinalFantasyComponentVisible = new BehaviorSubject<boolean>(false)
   currentFinalFantasyComponentVisibility =
     this.isFinalFantasyComponentVisible.asObservable()
 
-  toggleFinalFantasyComponent() {
+  toggleFinalFantasyComponent(boolean?: boolean) {
+    if (boolean === false) {
+      return this.isFinalFantasyComponentVisible.next(false)
+    }
+    if (boolean === true) {
+      return this.isFinalFantasyComponentVisible.next(true)
+    }
     this.isFinalFantasyComponentVisible.next(
       !this.isFinalFantasyComponentVisible.value
     )
