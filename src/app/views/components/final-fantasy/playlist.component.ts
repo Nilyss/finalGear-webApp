@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'
+import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core'
 
 // ********** UTILS **********
 import { ComponentToggleService } from '../../../utils/services/componentToggle.service'
@@ -21,21 +21,55 @@ import * as YoutubeSelectors from '../../../datas/ngrx/controller/youtube/youtub
 import { YoutubeState } from '../../../datas/ngrx/controller/youtube/youtubeReducer'
 
 @Component({
-  selector: 'app-final-fantasy',
+  selector: 'app-playlist',
   template: `
     <section class="section">
-      <div
-        *ngIf="finalFantasyPlaylists"
-        class="finalFantasy"
-        data-aos="slide-right"
-      >
+      <!-- ********** FINAL FANTASY PLAYLIST ********** -->
+
+      <div *ngIf="firstPlaylist" class="finalFantasy" data-aos="slide-right">
         <ul
-          *ngFor="let playlist of finalFantasyPlaylists"
+          *ngFor="let playlist of firstPlaylist"
           class="finalFantasy__playlistsWrapper"
         >
           <li
             (click)="
-              goToVideoPlayer(playlist['_id'], playlistIndex, 'finalFantasy')
+              goToVideoPlayer(
+                playlist['_id'],
+                finalFantasyPlaylistIndex,
+                playlistName
+              )
+            "
+            class="finalFantasy__playlistsWrapper__playlist"
+          >
+            <h2 class="finalFantasy__playlistsWrapper__playlist__title">
+              {{ playlist['name'] }}
+            </h2>
+            <figure
+              class="finalFantasy__playlistsWrapper__playlist__imageWrapper"
+            >
+              <img
+                [src]="playlist['episodes'][0]['thumbnail']"
+                alt="Episode 1 thumbnail"
+                class="finalFantasy__playlistsWrapper__playlist__imageWrapper__image"
+              />
+            </figure>
+            <p class="finalFantasy__playlistsWrapper__playlist__length">
+              Vidéo(s) : {{ playlist['episodes'].length }}
+            </p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ********** TIERS PLAYLIST ********** -->
+
+      <div *ngIf="secondPlaylist" class="finalFantasy" data-aos="slide-right">
+        <ul
+          *ngFor="let playlist of secondPlaylist"
+          class="finalFantasy__playlistsWrapper"
+        >
+          <li
+            (click)="
+              goToVideoPlayer(playlist['_id'], tiersPlaylistIndex, playlistName)
             "
             class="finalFantasy__playlistsWrapper__playlist"
           >
@@ -59,13 +93,20 @@ import { YoutubeState } from '../../../datas/ngrx/controller/youtube/youtubeRedu
       </div>
     </section>
   `,
-  styleUrls: ['./final-fantasy.component.scss'],
+  styleUrls: ['./playlist.component.scss'],
 })
-export class FinalFantasyComponent implements OnInit, OnDestroy {
+export class PlaylistComponent implements OnInit, OnDestroy, OnChanges {
   subscription: Subscription | undefined
+  playlistName: string
 
-  finalFantasyPlaylists: Youtube[] | undefined
-  playlistIndex: number
+  // ********** FINAL FANTASY PLAYLISTS **********
+  firstPlaylist: Youtube[] | undefined
+  finalFantasyPlaylistIndex: number
+
+  // ********** TIERS PLAYLISTS **********
+  secondPlaylist: Youtube[] | undefined
+  tiersPlaylistIndex: number
+
   isYoutubePlaylistsLoaded: boolean = false
 
   getYoutubePlaylists() {
@@ -80,20 +121,28 @@ export class FinalFantasyComponent implements OnInit, OnDestroy {
         })
     }
 
-    // get Final Fantasy playlists from ngrx store
+    // Find PlaylistName
+    this.subscription =
+      this.componentToggleService.currentPlaylistName.subscribe(
+        (playlistName: string) => (this.playlistName = playlistName)
+      )
+
+    // get All playlists from ngrx store
     this.subscription = this.store
       .select(YoutubeSelectors.selectYoutubePlaylist)
       .subscribe((res: Youtube[]) => {
         if (!res) {
           return
         }
-        this.finalFantasyPlaylists = res[0]['finalFantasy']
-        this.playlistIndex = 0
+        this.firstPlaylist = res[0][`${this.playlistName}`]
+        this.finalFantasyPlaylistIndex = 0
+        this.secondPlaylist = res[1][`${this.playlistName}`]
+        this.tiersPlaylistIndex = 1
       })
   }
 
   goToVideoPlayer(id: string, index: number, name: string) {
-    this.componentToggleService.toggleFinalFantasyComponent()
+    this.componentToggleService.togglePlaylistComponent(name, false)
     this.componentToggleService.toggleVideoPlayerComponentOn(id, index, name)
   }
 
@@ -105,9 +154,14 @@ export class FinalFantasyComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getYoutubePlaylists()
+    console.log('this.playlistName =>', this.playlistName)
   }
 
   ngOnDestroy() {
     this.subscription?.unsubscribe()
+  }
+
+  ngOnChanges() {
+    this.getYoutubePlaylists()
   }
 }

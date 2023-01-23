@@ -20,21 +20,19 @@ export class ComponentToggleService {
     this.isLandingComponentVisible.next(!this.isLandingComponentVisible.value)
   }
 
-  // ********** FINAL FANTASY COMPONENT **********
-  private isFinalFantasyComponentVisible = new BehaviorSubject<boolean>(false)
-  currentFinalFantasyComponentVisibility =
-    this.isFinalFantasyComponentVisible.asObservable()
+  // ********** PLAYLIST COMPONENT **********
+  public isPlaylistComponentVisible = new BehaviorSubject<boolean>(false)
+  public currentPlaylistName = new BehaviorSubject<string>('')
 
-  toggleFinalFantasyComponent(boolean?: boolean) {
-    if (boolean === false) {
-      return this.isFinalFantasyComponentVisible.next(false)
-    }
-    if (boolean === true) {
-      return this.isFinalFantasyComponentVisible.next(true)
-    }
-    this.isFinalFantasyComponentVisible.next(
-      !this.isFinalFantasyComponentVisible.value
-    )
+  currentPlaylistComponentVisibility =
+    this.isPlaylistComponentVisible.asObservable()
+
+  togglePlaylistComponent(name: string, isVisible: boolean) {
+    isVisible
+      ? (this.currentPlaylistName.next(name),
+        this.isPlaylistComponentVisible.next(true))
+      : (this.currentPlaylistName.next(name),
+        this.isPlaylistComponentVisible.next(false))
   }
 
   // ********** VIDEO PLAYER COMPONENT **********

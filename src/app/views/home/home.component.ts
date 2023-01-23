@@ -30,7 +30,7 @@ import { FinalGearState } from '../../datas/ngrx/controller/finalGear/finalGearR
       <app-header></app-header>
       <main class="main">
         <app-landing *ngIf="isLandingVisible"></app-landing>
-        <app-final-fantasy *ngIf="isFinalFantasyVisible"></app-final-fantasy>
+        <app-playlist *ngIf="isFinalFantasyVisible"></app-playlist>
         <app-video-player *ngIf="isVideoPlayerVisible"></app-video-player>
       </main>
       <app-footer></app-footer>
@@ -92,7 +92,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   finalFantasyVisibility() {
     this.subscription =
-      this.componentToggleService.currentFinalFantasyComponentVisibility.subscribe(
+      this.componentToggleService.currentPlaylistComponentVisibility.subscribe(
         (isVisible: boolean) => {
           this.isFinalFantasyVisible = isVisible
         }
