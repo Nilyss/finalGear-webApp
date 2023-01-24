@@ -118,16 +118,20 @@
     "tiers": [
       {
         "id": "5a9b4b9b0f1c9d0014a5b0b1",
-        "name": "Tiers",
+        "name": "Tiers Lists",
         "url": "https://www.youtube.com/watch?v=cG4DalleaWk&list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws",
         "episodes": [
           {
             "name": "TIERS LIST SAGA RESIDENT EVIL",
-            "url": "https://youtu.be/cG4DalleaWk?list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws"
+            "url": "https://youtu.be/cG4DalleaWk?list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws",
+            "duration": "0:30:45",
+            "thumbnail": "https://i.ytimg.com/vi/cG4DalleaWk/hqdefault.jpg"
           },
           {
             "name": "MA TIER LIST LEGEND OF ZELDA",
-            "url": "https://youtu.be/B9Agxkwqn-M?list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws"
+            "url": "https://youtu.be/B9Agxkwqn-M?list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws",
+            "duration": "0:45:39",
+            "thumbnail": "https://i.ytimg.com/vi/B9Agxkwqn-M/hqdefault.jpg"
           }
         ]
       }

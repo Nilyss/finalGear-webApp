@@ -5,15 +5,34 @@ import { BehaviorSubject } from 'rxjs'
 
 @Injectable({ providedIn: 'root' })
 export class ComponentToggleService {
-  // ********** FINAL FANTASY COMPONENT **********
-  private isFinalFantasyComponentVisible = new BehaviorSubject<boolean>(false)
-  currentFinalFantasyComponentVisibility =
-    this.isFinalFantasyComponentVisible.asObservable()
+  // ********** LANDING COMPONENT  **********
+  private isLandingComponentVisible = new BehaviorSubject<boolean>(true)
+  currentLandingComponentVisibility =
+    this.isLandingComponentVisible.asObservable()
 
-  toggleFinalFantasyComponent() {
-    this.isFinalFantasyComponentVisible.next(
-      !this.isFinalFantasyComponentVisible.value
-    )
+  toggleLandingComponent(boolean?: boolean) {
+    if (boolean === false) {
+      return this.isLandingComponentVisible.next(false)
+    }
+    if (boolean === true) {
+      return this.isLandingComponentVisible.next(true)
+    }
+    this.isLandingComponentVisible.next(!this.isLandingComponentVisible.value)
+  }
+
+  // ********** PLAYLIST COMPONENT **********
+  public isPlaylistComponentVisible = new BehaviorSubject<boolean>(false)
+  public currentPlaylistName = new BehaviorSubject<string>('')
+
+  currentPlaylistComponentVisibility =
+    this.isPlaylistComponentVisible.asObservable()
+
+  togglePlaylistComponent(name: string, isVisible: boolean) {
+    isVisible
+      ? (this.currentPlaylistName.next(name),
+        this.isPlaylistComponentVisible.next(true))
+      : (this.currentPlaylistName.next(name),
+        this.isPlaylistComponentVisible.next(false))
   }
 
   // ********** VIDEO PLAYER COMPONENT **********

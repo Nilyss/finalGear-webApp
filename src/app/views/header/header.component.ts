@@ -40,9 +40,14 @@ import * as BrandIcons from '@fortawesome/free-brands-svg-icons'
 
       <div class="containerTop">
         <div class="containerTop__titleWrapper">
-          <h1 class="containerTop__titleWrapper__title">FINAL GEAR</h1>
+          <h1
+            (click)="toggleLanding('landing', true)"
+            class="containerTop__titleWrapper__title"
+          >
+            FINAL GEAR
+          </h1>
           <p class="containerTop__titleWrapper__subtitle">
-            Final Fantasy, Tales of, Metal Gear, Mangas ...
+            Final Fantasy, Metal Gear, Zelda, Resident Evil, Kingdom Hearts...
           </p>
         </div>
         <div class="containerTop__socialNetworkWrapper">
@@ -89,19 +94,22 @@ import * as BrandIcons from '@fortawesome/free-brands-svg-icons'
         <div class="containerBottom__appNavWrapper">
           <nav class="containerBottom__appNavWrapper__linkWrapper">
             <a
-              (click)="toggleFinalFantasy()"
+              (click)="toggleLanding('landing', true)"
+              class="containerBottom__appNavWrapper__linkWrapper__link"
+            >
+              Accueil
+            </a>
+            <a
+              (click)="togglePlaylist('finalFantasy')"
               class="containerBottom__appNavWrapper__linkWrapper__link"
             >
               Final Fantasy
             </a>
-            <a class="containerBottom__appNavWrapper__linkWrapper__link">
-              Tales Of
-            </a>
-            <a class="containerBottom__appNavWrapper__linkWrapper__link">
-              Metal Gear
-            </a>
-            <a class="containerBottom__appNavWrapper__linkWrapper__link">
-              Mangas
+            <a
+              (click)="togglePlaylist('tiers')"
+              class="containerBottom__appNavWrapper__linkWrapper__link"
+            >
+              Tiers List
             </a>
           </nav>
         </div>
@@ -138,9 +146,29 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   // ********** TOGGLE **********
-  toggleFinalFantasy() {
-    this.componentToggleService.toggleFinalFantasyComponent()
+
+  toggleLanding(name: string, boolean?: boolean) {
+    this.componentToggleService.toggleLandingComponent(boolean)
+    this.componentToggleService.togglePlaylistComponent(name, false)
     this.componentToggleService.toggleVideoPlayerComponentOff()
+  }
+
+  togglePlaylist(name: string) {
+    const playlistComponentName: string =
+      this.componentToggleService.currentPlaylistName.value
+
+    if (playlistComponentName === name) {
+      return
+    }
+
+    this.componentToggleService.togglePlaylistComponent('', false)
+
+    // Create a delay to wait the end of component destruction before to toggle the new component
+    setTimeout(() => {
+      this.componentToggleService.togglePlaylistComponent(name, true)
+      this.componentToggleService.toggleLandingComponent(false)
+      this.componentToggleService.toggleVideoPlayerComponentOff()
+    }, 1)
   }
 
   // ********** INIT COMPONENT **********
@@ -152,6 +180,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getFinalGearInfo()
   }
+
   ngOnDestroy() {
     this.subscription?.unsubscribe()
   }

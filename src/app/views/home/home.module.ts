@@ -7,18 +7,20 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 // ********** COMPONENTS **********
 import { HeaderComponent } from '../header/header.component'
 import { HomeComponent } from './home.component'
-import { FinalFantasyComponent } from '../components/final-fantasy/final-fantasy.component'
+import { LandingComponent } from '../components/landing/landing.component'
+import { PlaylistComponent } from '../components/final-fantasy/playlist.component'
 import { VideoPlayerComponent } from '../components/video-player/video-player.component'
 import { FooterComponent } from '../footer/footer.component'
 import { BackToTopComponent } from '../components/back-to-top/backToTop.component'
 
-const homeRoutes: Routes = [{ path: 'accueil', component: HomeComponent }]
+const homeRoutes: Routes = [{ path: '', component: HomeComponent }]
 
 @NgModule({
   declarations: [
     HeaderComponent,
     HomeComponent,
-    FinalFantasyComponent,
+    LandingComponent,
+    PlaylistComponent,
     VideoPlayerComponent,
     FooterComponent,
     BackToTopComponent,

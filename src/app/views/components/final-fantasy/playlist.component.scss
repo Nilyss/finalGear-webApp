@@ -5,6 +5,9 @@
 
 .section {
   @include mixins.sectionStyle;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 2em;
 }
 
 .finalFantasy {
@@ -14,6 +17,9 @@
   display: flex;
   flex-flow: nowrap;
   gap: 2em;
+}
+
+.allPlaylistWrapper {
 }
 
 .finalFantasy__playlistsWrapper {

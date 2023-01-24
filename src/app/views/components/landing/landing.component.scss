@@ -1,0 +1,66 @@
+// ********** UTILS **********
+@use '../../../utils/styles/variables' as variables;
+@use '../../../utils/styles/mixins' as mixins;
+@import '../../../utils/styles/keyframes';
+
+.section {
+  @include mixins.sectionStyle;
+  cursor: default;
+}
+
+.landing {
+  @media (max-width: variables.$breakpointMobile) {
+    flex-flow: column;
+    gap: 2em;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.leftWrapper {
+  @media (max-width: variables.$breakpointMobile) {
+    width: 100%;
+  }
+  width: 33.33%;
+  filter: variables.$dropShadow;
+}
+
+.rightWrapper {
+  @media (max-width: variables.$breakpointMobile) {
+    width: 100%;
+  }
+  width: 50%;
+  filter: variables.$dropShadow;
+}
+
+// ********** COMPONENT TITLE **********
+
+.landing__titleWrapper {
+  color: variables.$fontColor-primary;
+}
+
+.landing__titleWrapper__title {
+  @include mixins.h2Style;
+  font-family: variables.$fontFamilyFF;
+  font-size: 3em;
+  margin-bottom: 50px;
+}
+
+// ********** FINAL GEAR OVERVIEW **********
+
+.landing__finalGearOverviewWrapper {}
+
+.landing__finalGearOverviewWrapper__overview {
+  color: variables.$fontColor-primary;
+}
+
+// ********** RIGHT WRAPPER **********
+
+.rightWrapper__imageWrapper {
+}
+
+.rightWrapper__imageWrapper__image {
+  width: 100%;
+  border-radius: 8px;
+}

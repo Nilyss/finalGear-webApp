@@ -120,9 +120,7 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
       this.embedId = this.requestedVideo?.split('/').pop()
       const URL = 'https://www.youtube.com/embed/' + this.embedId
       const safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(URL)
-      console.log('safe url =>', safeUrl)
       this.safeUrls.push(safeUrl)
-      console.log('safe urls =>', this.safeUrls)
     })
   }
 
