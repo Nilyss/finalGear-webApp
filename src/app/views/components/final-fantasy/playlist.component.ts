@@ -91,6 +91,42 @@ import { YoutubeState } from '../../../datas/ngrx/controller/youtube/youtubeRedu
           </li>
         </ul>
       </div>
+
+      <!-- ********** METAL GEAR PLAYLIST ********** -->
+
+      <div *ngIf="thirdPlaylist" class="finalFantasy" data-aos="slide-right">
+        <ul
+          *ngFor="let playlist of thirdPlaylist"
+          class="finalFantasy__playlistsWrapper"
+        >
+          <li
+            (click)="
+              goToVideoPlayer(
+                playlist['_id'],
+                metalGearPlaylistIndex,
+                playlistName
+              )
+            "
+            class="finalFantasy__playlistsWrapper__playlist"
+          >
+            <h2 class="finalFantasy__playlistsWrapper__playlist__title">
+              {{ playlist['name'] }}
+            </h2>
+            <figure
+              class="finalFantasy__playlistsWrapper__playlist__imageWrapper"
+            >
+              <img
+                [src]="playlist['episodes'][0]['thumbnail']"
+                alt="Episode 1 thumbnail"
+                class="finalFantasy__playlistsWrapper__playlist__imageWrapper__image"
+              />
+            </figure>
+            <p class="finalFantasy__playlistsWrapper__playlist__length">
+              Vidéo(s) : {{ playlist['episodes'].length }}
+            </p>
+          </li>
+        </ul>
+      </div>
     </section>
   `,
   styleUrls: ['./playlist.component.scss'],
@@ -106,6 +142,10 @@ export class PlaylistComponent implements OnInit, OnDestroy {
   // ********** TIERS PLAYLISTS **********
   secondPlaylist: Youtube[] | undefined
   tiersPlaylistIndex: number
+
+  // ********** METAL GEAR PLAYLISTS **********
+  thirdPlaylist: Youtube[] | undefined
+  metalGearPlaylistIndex: number
 
   isYoutubePlaylistsLoaded: boolean = false
 
@@ -138,6 +178,8 @@ export class PlaylistComponent implements OnInit, OnDestroy {
         this.finalFantasyPlaylistIndex = 0
         this.secondPlaylist = res[1][`${this.playlistName}`]
         this.tiersPlaylistIndex = 1
+        this.thirdPlaylist = res[2][`${this.playlistName}`]
+        this.metalGearPlaylistIndex = 2
       })
   }
 

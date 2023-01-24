@@ -106,6 +106,12 @@ import * as BrandIcons from '@fortawesome/free-brands-svg-icons'
               Final Fantasy
             </a>
             <a
+              (click)="togglePlaylist('metalGear')"
+              class="containerBottom__appNavWrapper__linkWrapper__link"
+            >
+              Metal Gear
+            </a>
+            <a
               (click)="togglePlaylist('tiers')"
               class="containerBottom__appNavWrapper__linkWrapper__link"
             >
@@ -156,7 +162,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   togglePlaylist(name: string) {
     const playlistComponentName: string =
       this.componentToggleService.currentPlaylistName.value
-
     if (playlistComponentName === name) {
       return
     }
