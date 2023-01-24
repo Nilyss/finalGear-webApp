@@ -47,7 +47,7 @@ import * as BrandIcons from '@fortawesome/free-brands-svg-icons'
             FINAL GEAR
           </h1>
           <p class="containerTop__titleWrapper__subtitle">
-            Final Fantasy, Zelda, Resident Evil, Kingdom Hearts...
+            Final Fantasy, Metal Gear, Zelda, Resident Evil, Kingdom Hearts...
           </p>
         </div>
         <div class="containerTop__socialNetworkWrapper">
@@ -162,8 +162,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
 
     this.componentToggleService.togglePlaylistComponent('', false)
-    this.componentToggleService.togglePlaylistComponent(name, true)
-    this.componentToggleService.toggleLandingComponent(false)
+
+    // Create a delay to wait the end of component destruction before to toggle the new component
+    setTimeout(() => {
+      this.componentToggleService.togglePlaylistComponent(name, true)
+      this.componentToggleService.toggleLandingComponent(false)
+      this.componentToggleService.toggleVideoPlayerComponentOff()
+    }, 1)
   }
 
   // ********** INIT COMPONENT **********
@@ -175,8 +180,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getFinalGearInfo()
   }
+
   ngOnDestroy() {
     this.subscription?.unsubscribe()
-    this.componentToggleService.currentPlaylistName.unsubscribe()
   }
 }

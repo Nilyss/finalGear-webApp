@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 
 // ********** UTILS **********
 import { ComponentToggleService } from '../../../utils/services/componentToggle.service'
@@ -95,7 +95,7 @@ import { YoutubeState } from '../../../datas/ngrx/controller/youtube/youtubeRedu
   `,
   styleUrls: ['./playlist.component.scss'],
 })
-export class PlaylistComponent implements OnInit, OnDestroy, OnChanges {
+export class PlaylistComponent implements OnInit, OnDestroy {
   subscription: Subscription | undefined
   playlistName: string
 
@@ -154,14 +154,9 @@ export class PlaylistComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnInit() {
     this.getYoutubePlaylists()
-    console.log('this.playlistName =>', this.playlistName)
   }
 
   ngOnDestroy() {
     this.subscription?.unsubscribe()
-  }
-
-  ngOnChanges() {
-    this.getYoutubePlaylists()
   }
 }
