@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 
 // ********** UTILS **********
 import { ComponentToggleService } from '../../../utils/services/componentToggle.service'
@@ -91,11 +91,47 @@ import { YoutubeState } from '../../../datas/ngrx/controller/youtube/youtubeRedu
           </li>
         </ul>
       </div>
+
+      <!-- ********** METAL GEAR PLAYLIST ********** -->
+
+      <div *ngIf="thirdPlaylist" class="finalFantasy" data-aos="slide-right">
+        <ul
+          *ngFor="let playlist of thirdPlaylist"
+          class="finalFantasy__playlistsWrapper"
+        >
+          <li
+            (click)="
+              goToVideoPlayer(
+                playlist['_id'],
+                metalGearPlaylistIndex,
+                playlistName
+              )
+            "
+            class="finalFantasy__playlistsWrapper__playlist"
+          >
+            <h2 class="finalFantasy__playlistsWrapper__playlist__title">
+              {{ playlist['name'] }}
+            </h2>
+            <figure
+              class="finalFantasy__playlistsWrapper__playlist__imageWrapper"
+            >
+              <img
+                [src]="playlist['episodes'][0]['thumbnail']"
+                alt="Episode 1 thumbnail"
+                class="finalFantasy__playlistsWrapper__playlist__imageWrapper__image"
+              />
+            </figure>
+            <p class="finalFantasy__playlistsWrapper__playlist__length">
+              Vidéo(s) : {{ playlist['episodes'].length }}
+            </p>
+          </li>
+        </ul>
+      </div>
     </section>
   `,
   styleUrls: ['./playlist.component.scss'],
 })
-export class PlaylistComponent implements OnInit, OnDestroy, OnChanges {
+export class PlaylistComponent implements OnInit, OnDestroy {
   subscription: Subscription | undefined
   playlistName: string
 
@@ -106,6 +142,10 @@ export class PlaylistComponent implements OnInit, OnDestroy, OnChanges {
   // ********** TIERS PLAYLISTS **********
   secondPlaylist: Youtube[] | undefined
   tiersPlaylistIndex: number
+
+  // ********** METAL GEAR PLAYLISTS **********
+  thirdPlaylist: Youtube[] | undefined
+  metalGearPlaylistIndex: number
 
   isYoutubePlaylistsLoaded: boolean = false
 
@@ -138,6 +178,8 @@ export class PlaylistComponent implements OnInit, OnDestroy, OnChanges {
         this.finalFantasyPlaylistIndex = 0
         this.secondPlaylist = res[1][`${this.playlistName}`]
         this.tiersPlaylistIndex = 1
+        this.thirdPlaylist = res[2][`${this.playlistName}`]
+        this.metalGearPlaylistIndex = 2
       })
   }
 
@@ -154,14 +196,9 @@ export class PlaylistComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnInit() {
     this.getYoutubePlaylists()
-    console.log('this.playlistName =>', this.playlistName)
   }
 
   ngOnDestroy() {
     this.subscription?.unsubscribe()
-  }
-
-  ngOnChanges() {
-    this.getYoutubePlaylists()
   }
 }

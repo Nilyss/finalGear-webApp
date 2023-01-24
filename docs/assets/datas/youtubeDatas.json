@@ -118,16 +118,61 @@
     "tiers": [
       {
         "id": "5a9b4b9b0f1c9d0014a5b0b1",
-        "name": "Tiers",
+        "name": "Tiers Lists",
         "url": "https://www.youtube.com/watch?v=cG4DalleaWk&list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws",
         "episodes": [
           {
             "name": "TIERS LIST SAGA RESIDENT EVIL",
-            "url": "https://youtu.be/cG4DalleaWk?list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws"
+            "url": "https://youtu.be/cG4DalleaWk?list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws",
+            "duration": "0:30:45",
+            "thumbnail": "https://i.ytimg.com/vi/cG4DalleaWk/hqdefault.jpg"
           },
           {
             "name": "MA TIER LIST LEGEND OF ZELDA",
-            "url": "https://youtu.be/B9Agxkwqn-M?list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws"
+            "url": "https://youtu.be/B9Agxkwqn-M?list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws",
+            "duration": "0:45:39",
+            "thumbnail": "https://i.ytimg.com/vi/B9Agxkwqn-M/hqdefault.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "metalGear": [
+      {
+        "id": "5a9b4b9b0f1c9d0014a5b0b2",
+        "name": "Metal Gear Solid",
+        "url": "https://www.youtube.com/watch?v=s-p2H44d7nE&list=PLUiG5FHhZshOD42Rk-x0yqWR5n-P7t4r0",
+        "episodes": [
+          {
+            "name": "MON TOP 10 DES MOMENTS CULTES DE LA SAGA METAL GEAR SOLID.",
+            "url": "https://youtu.be/s-p2H44d7nE?list=PLUiG5FHhZshOD42Rk-x0yqWR5n-P7t4r0",
+            "duration": "0:26:34",
+            "thumbnail": "https://i.ytimg.com/vi/s-p2H44d7nE/hqdefault.jpg"
+          },
+          {
+            "name": "MA TIERS LIST METAL GEAR SOLID!!!!!!!!!!!!",
+            "url": "https://youtu.be/XnJnoq9vliM?list=PLUiG5FHhZshOD42Rk-x0yqWR5n-P7t4r0",
+            "duration": "0:53:16",
+            "thumbnail": "https://i.ytimg.com/vi/XnJnoq9vliM/hqdefault.jpg"
+          },
+          {
+            "name": "METAL GEAR SOLID 3 : HISTOIRE D'UNE SAGA",
+            "url": "https://youtu.be/I8S7z2DM51s?list=PLUiG5FHhZshOD42Rk-x0yqWR5n-P7t4r0",
+            "duration": "0:46:28",
+            "thumbnail": "https://i.ytimg.com/vi/I8S7z2DM51s/hqdefault.jpg"
+          },
+          {
+            "name": "VERS UN REMAKE DE METAL GEAR SOLID?",
+            "url": "https://youtu.be/r7cVFFN1_lg?list=PLUiG5FHhZshOD42Rk-x0yqWR5n-P7t4r0",
+            "duration": "0:25:15",
+            "thumbnail": "https://i.ytimg.com/vi/r7cVFFN1_lg/hqdefault.jpg"
+          },
+          {
+            "name": "METAL GEAR SOLID PORTABLE OPS : HISTOIRE D'UNE SAGA",
+            "url": "https://youtu.be/t7R0gg-jIIY?list=PLUiG5FHhZshOD42Rk-x0yqWR5n-P7t4r0",
+            "duration": "0:33:23",
+            "thumbnail": "https://i.ytimg.com/vi/t7R0gg-jIIY/hqdefault.jpg"
           }
         ]
       }
