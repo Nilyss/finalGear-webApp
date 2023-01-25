@@ -26,9 +26,9 @@ import { YoutubeState } from '../../../datas/ngrx/controller/youtube/youtubeRedu
     <section class="section">
       <!-- ********** FINAL FANTASY PLAYLIST ********** -->
 
-      <div *ngIf="firstPlaylist" class="finalFantasy" data-aos="slide-right">
+      <div *ngIf="selectedPlaylist" class="finalFantasy" data-aos="slide-right">
         <ul
-          *ngFor="let playlist of firstPlaylist"
+          *ngFor="let playlist of selectedPlaylist"
           class="finalFantasy__playlistsWrapper"
         >
           <li
@@ -36,74 +36,6 @@ import { YoutubeState } from '../../../datas/ngrx/controller/youtube/youtubeRedu
               goToVideoPlayer(
                 playlist['_id'],
                 finalFantasyPlaylistIndex,
-                playlistName
-              )
-            "
-            class="finalFantasy__playlistsWrapper__playlist"
-          >
-            <h2 class="finalFantasy__playlistsWrapper__playlist__title">
-              {{ playlist['name'] }}
-            </h2>
-            <figure
-              class="finalFantasy__playlistsWrapper__playlist__imageWrapper"
-            >
-              <img
-                [src]="playlist['episodes'][0]['thumbnail']"
-                alt="Episode 1 thumbnail"
-                class="finalFantasy__playlistsWrapper__playlist__imageWrapper__image"
-              />
-            </figure>
-            <p class="finalFantasy__playlistsWrapper__playlist__length">
-              Vidéo(s) : {{ playlist['episodes'].length }}
-            </p>
-          </li>
-        </ul>
-      </div>
-
-      <!-- ********** TIERS PLAYLIST ********** -->
-
-      <div *ngIf="secondPlaylist" class="finalFantasy" data-aos="slide-right">
-        <ul
-          *ngFor="let playlist of secondPlaylist"
-          class="finalFantasy__playlistsWrapper"
-        >
-          <li
-            (click)="
-              goToVideoPlayer(playlist['_id'], tiersPlaylistIndex, playlistName)
-            "
-            class="finalFantasy__playlistsWrapper__playlist"
-          >
-            <h2 class="finalFantasy__playlistsWrapper__playlist__title">
-              {{ playlist['name'] }}
-            </h2>
-            <figure
-              class="finalFantasy__playlistsWrapper__playlist__imageWrapper"
-            >
-              <img
-                [src]="playlist['episodes'][0]['thumbnail']"
-                alt="Episode 1 thumbnail"
-                class="finalFantasy__playlistsWrapper__playlist__imageWrapper__image"
-              />
-            </figure>
-            <p class="finalFantasy__playlistsWrapper__playlist__length">
-              Vidéo(s) : {{ playlist['episodes'].length }}
-            </p>
-          </li>
-        </ul>
-      </div>
-
-      <!-- ********** METAL GEAR PLAYLIST ********** -->
-
-      <div *ngIf="thirdPlaylist" class="finalFantasy" data-aos="slide-right">
-        <ul
-          *ngFor="let playlist of thirdPlaylist"
-          class="finalFantasy__playlistsWrapper"
-        >
-          <li
-            (click)="
-              goToVideoPlayer(
-                playlist['_id'],
-                metalGearPlaylistIndex,
                 playlistName
               )
             "
@@ -147,7 +79,11 @@ export class PlaylistComponent implements OnInit, OnDestroy {
   thirdPlaylist: Youtube[] | undefined
   metalGearPlaylistIndex: number
 
+  // ********** INIT COMPONENT **********
+
   isYoutubePlaylistsLoaded: boolean = false
+
+  selectedPlaylist: string
 
   getYoutubePlaylists() {
     if (!this.isYoutubePlaylistsLoaded) {
@@ -174,12 +110,10 @@ export class PlaylistComponent implements OnInit, OnDestroy {
         if (!res) {
           return
         }
-        this.firstPlaylist = res[0][`${this.playlistName}`]
-        this.finalFantasyPlaylistIndex = 0
-        this.secondPlaylist = res[1][`${this.playlistName}`]
-        this.tiersPlaylistIndex = 1
-        this.thirdPlaylist = res[2][`${this.playlistName}`]
-        this.metalGearPlaylistIndex = 2
+        res.find(
+          (playlist: Youtube) =>
+            (this.selectedPlaylist = playlist[`${this.playlistName}`])
+        )
       })
   }
 
