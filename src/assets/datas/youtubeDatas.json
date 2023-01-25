@@ -1,6 +1,7 @@
 [
   {
-    "finalFantasy": [
+    "license": "Final Fantasy",
+    "playlists": [
       {
         "_id": "5a9b4b9b0f1c9d0014a5b0a1",
         "name": "Crisis Core Réunion - Final Fantasy VII — Twitch",
@@ -115,30 +116,8 @@
     ]
   },
   {
-    "tiers": [
-      {
-        "id": "5a9b4b9b0f1c9d0014a5b0b1",
-        "name": "Tiers Lists",
-        "url": "https://www.youtube.com/watch?v=cG4DalleaWk&list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws",
-        "episodes": [
-          {
-            "name": "TIERS LIST SAGA RESIDENT EVIL",
-            "url": "https://youtu.be/cG4DalleaWk?list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws",
-            "duration": "0:30:45",
-            "thumbnail": "https://i.ytimg.com/vi/cG4DalleaWk/hqdefault.jpg"
-          },
-          {
-            "name": "MA TIER LIST LEGEND OF ZELDA",
-            "url": "https://youtu.be/B9Agxkwqn-M?list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws",
-            "duration": "0:45:39",
-            "thumbnail": "https://i.ytimg.com/vi/B9Agxkwqn-M/hqdefault.jpg"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "metalGear": [
+    "license": "Metal Gear",
+    "playlists": [
       {
         "id": "5a9b4b9b0f1c9d0014a5b0b2",
         "name": "Metal Gear Solid",
@@ -173,6 +152,30 @@
             "url": "https://youtu.be/t7R0gg-jIIY?list=PLUiG5FHhZshOD42Rk-x0yqWR5n-P7t4r0",
             "duration": "0:33:23",
             "thumbnail": "https://i.ytimg.com/vi/t7R0gg-jIIY/hqdefault.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "license": "Tiers",
+    "playlists": [
+      {
+        "id": "5a9b4b9b0f1c9d0014a5b0b1",
+        "name": "Tiers Lists",
+        "url": "https://www.youtube.com/watch?v=cG4DalleaWk&list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws",
+        "episodes": [
+          {
+            "name": "TIERS LIST SAGA RESIDENT EVIL",
+            "url": "https://youtu.be/cG4DalleaWk?list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws",
+            "duration": "0:30:45",
+            "thumbnail": "https://i.ytimg.com/vi/cG4DalleaWk/hqdefault.jpg"
+          },
+          {
+            "name": "MA TIER LIST LEGEND OF ZELDA",
+            "url": "https://youtu.be/B9Agxkwqn-M?list=PLUiG5FHhZshMq_8rE20wR2ZGCeDpwnHws",
+            "duration": "0:45:39",
+            "thumbnail": "https://i.ytimg.com/vi/B9Agxkwqn-M/hqdefault.jpg"
           }
         ]
       }

@@ -6,15 +6,11 @@ import { ComponentToggleService } from '../../../utils/services/componentToggle.
 // ********** RXJS **********
 import { Subscription } from 'rxjs'
 
-// ********** SERVICES **********
-import { YoutubeService } from '../../../datas/services/youtube.service'
-
 // ********** MODELS **********
 import { Youtube } from '../../../datas/models/youtube'
 
 // ********** NGRX **********
 import { Store } from '@ngrx/store'
-import * as YoutubeActions from '../../../datas/ngrx/controller/youtube/youtubeAction'
 import * as YoutubeSelectors from '../../../datas/ngrx/controller/youtube/youtubeSelector'
 
 // ***** STATE & REDUCER *****
@@ -24,36 +20,40 @@ import { YoutubeState } from '../../../datas/ngrx/controller/youtube/youtubeRedu
   selector: 'app-playlist',
   template: `
     <section class="section">
-      <!-- ********** FINAL FANTASY PLAYLIST ********** -->
+      <!-- ********** SELECTED PLAYLIST ********** -->
 
-      <div *ngIf="selectedPlaylist" class="finalFantasy" data-aos="slide-right">
+      <div
+        *ngIf="selectedPlaylist"
+        class="selectedPlaylist"
+        data-aos="slide-right"
+      >
         <ul
           *ngFor="let playlist of selectedPlaylist"
-          class="finalFantasy__playlistsWrapper"
+          class="selectedPlaylist__playlistsWrapper"
         >
           <li
             (click)="
               goToVideoPlayer(
                 playlist['_id'],
-                finalFantasyPlaylistIndex,
+                selectedPlaylistIndex,
                 playlistName
               )
             "
-            class="finalFantasy__playlistsWrapper__playlist"
+            class="selectedPlaylist__playlistsWrapper__playlist"
           >
-            <h2 class="finalFantasy__playlistsWrapper__playlist__title">
+            <h2 class="selectedPlaylist__playlistsWrapper__playlist__title">
               {{ playlist['name'] }}
             </h2>
             <figure
-              class="finalFantasy__playlistsWrapper__playlist__imageWrapper"
+              class="selectedPlaylist__playlistsWrapper__playlist__imageWrapper"
             >
               <img
                 [src]="playlist['episodes'][0]['thumbnail']"
                 alt="Episode 1 thumbnail"
-                class="finalFantasy__playlistsWrapper__playlist__imageWrapper__image"
+                class="selectedPlaylist__playlistsWrapper__playlist__imageWrapper__image"
               />
             </figure>
-            <p class="finalFantasy__playlistsWrapper__playlist__length">
+            <p class="selectedPlaylist__playlistsWrapper__playlist__length">
               Vidéo(s) : {{ playlist['episodes'].length }}
             </p>
           </li>
@@ -66,44 +66,20 @@ import { YoutubeState } from '../../../datas/ngrx/controller/youtube/youtubeRedu
 export class PlaylistComponent implements OnInit, OnDestroy {
   subscription: Subscription | undefined
   playlistName: string
+  selectedPlaylist: Youtube['license']
+  selectedPlaylistIndex: number
 
-  // ********** FINAL FANTASY PLAYLISTS **********
-  firstPlaylist: Youtube[] | undefined
-  finalFantasyPlaylistIndex: number
-
-  // ********** TIERS PLAYLISTS **********
-  secondPlaylist: Youtube[] | undefined
-  tiersPlaylistIndex: number
-
-  // ********** METAL GEAR PLAYLISTS **********
-  thirdPlaylist: Youtube[] | undefined
-  metalGearPlaylistIndex: number
-
-  // ********** INIT COMPONENT **********
-
-  isYoutubePlaylistsLoaded: boolean = false
-
-  selectedPlaylist: string
-
-  getYoutubePlaylists() {
-    if (!this.isYoutubePlaylistsLoaded) {
-      this.subscription = this.youtubeService
-        .getYoutubePlaylist()
-        .subscribe((res: Youtube[]) => {
-          this.store.dispatch(
-            YoutubeActions.getYoutubePlaylists({ youtubePlaylists: res })
-          )
-          this.isYoutubePlaylistsLoaded = true
-        })
-    }
-
+  getSelectedLicense() {
     // Find PlaylistName
     this.subscription =
       this.componentToggleService.currentPlaylistName.subscribe(
-        (playlistName: string) => (this.playlistName = playlistName)
+        (playlistName: string) => {
+          this.playlistName = playlistName
+          console.log(this.playlistName)
+        }
       )
 
-    // get All playlists from ngrx store
+    // get All playlists from ngrx store and find the selected playlist by name and set index
     this.subscription = this.store
       .select(YoutubeSelectors.selectYoutubePlaylist)
       .subscribe((res: Youtube[]) => {
@@ -114,6 +90,9 @@ export class PlaylistComponent implements OnInit, OnDestroy {
           (playlist: Youtube) =>
             (this.selectedPlaylist = playlist[`${this.playlistName}`])
         )
+        this.selectedPlaylistIndex = res.findIndex(
+          (playlist: Youtube) => playlist[`${this.playlistName}`]
+        )
       })
   }
 
@@ -123,13 +102,12 @@ export class PlaylistComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private youtubeService: YoutubeService,
     private store: Store<{ youtubeDatas: YoutubeState }>,
     private componentToggleService: ComponentToggleService
   ) {}
 
   ngOnInit() {
-    this.getYoutubePlaylists()
+    this.getSelectedLicense()
   }
 
   ngOnDestroy() {
