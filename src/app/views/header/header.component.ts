@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 
-// ********** UTILS **********
+// ********** SERVICES **********
 import { ComponentToggleService } from '../../utils/services/componentToggle.service'
+import { YoutubeService } from '../../datas/services/youtube.service'
 
 // ********** RXJS **********
 import { Subscription } from 'rxjs'
@@ -10,12 +11,16 @@ import { Subscription } from 'rxjs'
 import { Store } from '@ngrx/store'
 import { FinalGearState } from '../../datas/ngrx/controller/finalGear/finalGearReducer'
 import * as FinalGearSelectors from '../../datas/ngrx/controller/finalGear/finalGearSelector'
+import { YoutubeState } from '../../datas/ngrx/controller/youtube/youtubeReducer'
+import * as YoutubeSelectors from '../../datas/ngrx/controller/youtube/youtubeSelector'
 
 // ********** MODELS **********
 import { FinalGear } from '../../datas/models/finalGear'
 
 // ************ ICONS ************
 import * as BrandIcons from '@fortawesome/free-brands-svg-icons'
+import { Youtube } from '../../datas/models/youtube'
+import * as YoutubeActions from '../../datas/ngrx/controller/youtube/youtubeAction'
 
 @Component({
   selector: 'app-header',
@@ -94,28 +99,11 @@ import * as BrandIcons from '@fortawesome/free-brands-svg-icons'
         <div class="containerBottom__appNavWrapper">
           <nav class="containerBottom__appNavWrapper__linkWrapper">
             <a
-              (click)="toggleLanding('landing', true)"
+              *ngFor="let license of licenses"
+              (click)="togglePlaylist(license)"
               class="containerBottom__appNavWrapper__linkWrapper__link"
             >
-              Accueil
-            </a>
-            <a
-              (click)="togglePlaylist('finalFantasy')"
-              class="containerBottom__appNavWrapper__linkWrapper__link"
-            >
-              Final Fantasy
-            </a>
-            <a
-              (click)="togglePlaylist('metalGear')"
-              class="containerBottom__appNavWrapper__linkWrapper__link"
-            >
-              Metal Gear
-            </a>
-            <a
-              (click)="togglePlaylist('tiers')"
-              class="containerBottom__appNavWrapper__linkWrapper__link"
-            >
-              Tiers List
+              {{ license }}
             </a>
           </nav>
         </div>
@@ -128,6 +116,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   subscription: Subscription | undefined
   finalGearImages: FinalGear['images']
   finalGearSocials: FinalGear['socialNetwork']
+
+  isYoutubePlaylistsLoaded: boolean = false
+  licenses: Youtube['license'][]
 
   // ************ ICONS ************
 
@@ -151,6 +142,29 @@ export class HeaderComponent implements OnInit, OnDestroy {
       })
   }
 
+  getYoutubePlaylists() {
+    if (!this.isYoutubePlaylistsLoaded) {
+      this.subscription = this.youtubeService
+        .getYoutubePlaylist()
+        .subscribe((res: Youtube[]) => {
+          this.store.dispatch(
+            YoutubeActions.getYoutubePlaylists({ youtubePlaylists: res })
+          )
+          this.isYoutubePlaylistsLoaded = true
+        })
+    }
+  }
+
+  getLicencesNames() {
+    this.store
+      .select(YoutubeSelectors.selectYoutubePlaylist)
+      .subscribe((res: Youtube[]) => {
+        if (!res) {
+          return
+        }
+        this.licenses = res.map((licenses: Youtube) => licenses.license)
+      })
+  }
   // ********** TOGGLE **********
 
   toggleLanding(name: string, boolean?: boolean) {
@@ -160,12 +174,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   togglePlaylist(name: string) {
-    const playlistComponentName: string =
-      this.componentToggleService.currentPlaylistName.value
-    if (playlistComponentName === name) {
-      return
-    }
-
     this.componentToggleService.togglePlaylistComponent('', false)
 
     // Create a delay to wait the end of component destruction before to toggle the new component
@@ -179,11 +187,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // ********** INIT COMPONENT **********
 
   constructor(
-    private store: Store<{ finalGearInfo: FinalGearState }>,
-    private componentToggleService: ComponentToggleService
+    private store: Store<{
+      finalGearInfo: FinalGearState
+      youtubeDatas: YoutubeState
+    }>,
+    private componentToggleService: ComponentToggleService,
+    private youtubeService: YoutubeService
   ) {}
   ngOnInit() {
     this.getFinalGearInfo()
+    this.getYoutubePlaylists()
+    this.getLicencesNames()
   }
 
   ngOnDestroy() {

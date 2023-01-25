@@ -10,7 +10,7 @@
   gap: 2em;
 }
 
-.finalFantasy {
+.selectedPlaylist {
   @media(max-width: variables.$breakpointMobile) {
     flex-flow: column;
   }
@@ -19,17 +19,14 @@
   gap: 2em;
 }
 
-.allPlaylistWrapper {
-}
-
-.finalFantasy__playlistsWrapper {
+.selectedPlaylist__playlistsWrapper {
   @media(max-width: variables.$breakpointMobile) {
     width: 100%;
   }
   width: 33.33%;
 }
 
-.finalFantasy__playlistsWrapper__playlist {
+.selectedPlaylist__playlistsWrapper__playlist {
   @media(max-width: variables.$breakpointLaptop) {
     padding: 1em;
   }
@@ -57,7 +54,7 @@
 
 }
 
-.finalFantasy__playlistsWrapper__playlist__title {
+.selectedPlaylist__playlistsWrapper__playlist__title {
   @media(max-width: variables.$breakpointTablet) {
     font-size: 20px;
     min-height: 70px;
@@ -67,7 +64,7 @@
   @include mixins.h2Style;
 }
 
-.finalFantasy__playlistsWrapper__playlist__imageWrapper {
+.selectedPlaylist__playlistsWrapper__playlist__imageWrapper {
   @media(max-width: variables.$breakpointLaptop) {
     width: 280px;
     height: 160px;
@@ -84,13 +81,13 @@
   height: 165px;
 }
 
-.finalFantasy__playlistsWrapper__playlist__imageWrapper__image {
+.selectedPlaylist__playlistsWrapper__playlist__imageWrapper__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 8px;
 }
 
-.finalFantasy__playlistsWrapper__playlist__length {
+.selectedPlaylist__playlistsWrapper__playlist__length {
   color: variables.$fontColor-primary;
 }
