@@ -21,18 +21,18 @@ import { ComponentToggleService } from '../../../utils/services/componentToggle.
     <section class="section">
       <div class="youtubePlayer" data-aos="slide-left">
         <div class="youtubePlayer__titleWrapper">
-          <h2 class="youtubePlayer__title">{{ requestedPlaylist['name'] }}</h2>
+          <h2 class="youtubePlayer__title">{{ requestedName }}</h2>
         </div>
         <ul class="youtubePlayer__episodeWrapper">
           <li
-            *ngFor="let episode of requestedPlaylist['episodes']; let i = index"
+            *ngFor="let episode of requestedPlaylist; let i = index"
             class="youtubePlayer__episodeWrapper__episode"
           >
             <div class="youtubePlayer__episodeWrapper__episode__titleWrapper">
               <p
                 class="youtubePlayer__episodeWrapper__episode__titleWrapper__title"
               >
-                {{ episode['name'] }}
+                {{ episode.name }}
               </p>
             </div>
             <div
@@ -52,7 +52,7 @@ import { ComponentToggleService } from '../../../utils/services/componentToggle.
               <p
                 class="youtubePlayer__episodeWrapper__episode__durationWrapper__duration"
               >
-                Durée de la vidéo : {{ episode['duration'] }}
+                Durée de la vidéo : {{ episode.duration }}
               </p>
             </div>
           </li>
@@ -75,8 +75,7 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
 
   requestedVideo: string | undefined
 
-  requestedPlaylist: Youtube | undefined
-
+  requestedPlaylist
   embedId: string | undefined
 
   safeUrls = []
@@ -106,17 +105,18 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
         .select(YoutubeSelector.selectYoutubePlaylist)
         .subscribe((youtubePlaylist: Youtube[]) => {
           if (!youtubePlaylist) return
-          this.requestedPlaylist = youtubePlaylist[this.requestedIndex][
-            `${this.requestedName}`
-          ].find((playlist: Youtube) => playlist['_id'] === this.requestedId)
+          youtubePlaylist[this.requestedIndex].playlists.find((playlist) => {
+            if (playlist.name === this.requestedName)
+              this.requestedPlaylist = playlist.episodes
+          })
         })
     }
   }
 
   getEmbedUrl() {
     if (!this.requestedPlaylist) return
-    this.requestedPlaylist['episodes'].forEach((episode) => {
-      this.requestedVideo = episode['url']
+    this.requestedPlaylist.forEach((episode) => {
+      this.requestedVideo = episode.url
       this.embedId = this.requestedVideo?.split('/').pop()
       const URL = 'https://www.youtube.com/embed/' + this.embedId
       const safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(URL)

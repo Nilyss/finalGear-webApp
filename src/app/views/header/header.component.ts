@@ -46,7 +46,7 @@ import * as YoutubeActions from '../../datas/ngrx/controller/youtube/youtubeActi
       <div class="containerTop">
         <div class="containerTop__titleWrapper">
           <h1
-            (click)="toggleLanding('landing', true)"
+            (click)="toggleLanding(true)"
             class="containerTop__titleWrapper__title"
           >
             FINAL GEAR
@@ -100,10 +100,10 @@ import * as YoutubeActions from '../../datas/ngrx/controller/youtube/youtubeActi
           <nav class="containerBottom__appNavWrapper__linkWrapper">
             <a
               *ngFor="let license of licenses"
-              (click)="togglePlaylist(license)"
+              (click)="togglePlaylist(license.name, license.id)"
               class="containerBottom__appNavWrapper__linkWrapper__link"
             >
-              {{ license }}
+              {{ license.name }}
             </a>
           </nav>
         </div>
@@ -118,7 +118,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   finalGearSocials: FinalGear['socialNetwork']
 
   isYoutubePlaylistsLoaded: boolean = false
-  licenses: Youtube['license'][]
+  licenses: { name: string; id: string }[]
 
   // ************ ICONS ************
 
@@ -155,30 +155,36 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
-  getLicencesNames() {
+  getLicences() {
     this.store
       .select(YoutubeSelectors.selectYoutubePlaylist)
-      .subscribe((res: Youtube[]) => {
-        if (!res) {
+      .subscribe((licenses: Youtube[]) => {
+        if (!licenses) {
           return
         }
-        this.licenses = res.map((licenses: Youtube) => licenses.license)
+        this.licenses = licenses.map((license: Youtube) => {
+          const obj = {
+            name: license.license,
+            id: license._id,
+          }
+          return obj
+        })
       })
   }
   // ********** TOGGLE **********
 
-  toggleLanding(name: string, boolean?: boolean) {
+  toggleLanding(boolean?: boolean) {
     this.componentToggleService.toggleLandingComponent(boolean)
-    this.componentToggleService.togglePlaylistComponent(name, false)
+    this.componentToggleService.togglePlaylistComponent('', '', false)
     this.componentToggleService.toggleVideoPlayerComponentOff()
   }
 
-  togglePlaylist(name: string) {
-    this.componentToggleService.togglePlaylistComponent('', false)
+  togglePlaylist(name: string, id: string) {
+    this.componentToggleService.togglePlaylistComponent('', '', false)
 
     // Create a delay to wait the end of component destruction before to toggle the new component
     setTimeout(() => {
-      this.componentToggleService.togglePlaylistComponent(name, true)
+      this.componentToggleService.togglePlaylistComponent(name, id, true)
       this.componentToggleService.toggleLandingComponent(false)
       this.componentToggleService.toggleVideoPlayerComponentOff()
     }, 1)
@@ -197,7 +203,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getFinalGearInfo()
     this.getYoutubePlaylists()
-    this.getLicencesNames()
+    this.getLicences()
   }
 
   ngOnDestroy() {
