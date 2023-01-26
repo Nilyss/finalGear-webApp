@@ -1,5 +1,6 @@
 export class Youtube {
   license: string
+  _id: string
   playlists: [
     {
       id: string
@@ -18,6 +19,7 @@ export class Youtube {
 
   constructor(
     license: string,
+    _id: string,
     playlists: [
       {
         id: string
@@ -35,6 +37,7 @@ export class Youtube {
     ]
   ) {
     this.license = license
+    this._id = _id
     this.playlists = playlists
   }
 }

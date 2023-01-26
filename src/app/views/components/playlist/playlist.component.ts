@@ -33,28 +33,24 @@ import { YoutubeState } from '../../../datas/ngrx/controller/youtube/youtubeRedu
         >
           <li
             (click)="
-              goToVideoPlayer(
-                playlist['_id'],
-                selectedPlaylistIndex,
-                playlistName
-              )
+              goToVideoPlayer(playlist.id, selectedPlaylistIndex, playlist.name)
             "
             class="selectedPlaylist__playlistsWrapper__playlist"
           >
             <h2 class="selectedPlaylist__playlistsWrapper__playlist__title">
-              {{ playlist['name'] }}
+              {{ playlist.name }}
             </h2>
             <figure
               class="selectedPlaylist__playlistsWrapper__playlist__imageWrapper"
             >
               <img
-                [src]="playlist['episodes'][0]['thumbnail']"
+                [src]="playlist.episodes[0].thumbnail"
                 alt="Episode 1 thumbnail"
                 class="selectedPlaylist__playlistsWrapper__playlist__imageWrapper__image"
               />
             </figure>
             <p class="selectedPlaylist__playlistsWrapper__playlist__length">
-              Vidéo(s) : {{ playlist['episodes'].length }}
+              Vidéo(s) : {{ playlist.episodes.length }}
             </p>
           </li>
         </ul>
@@ -66,7 +62,7 @@ import { YoutubeState } from '../../../datas/ngrx/controller/youtube/youtubeRedu
 export class PlaylistComponent implements OnInit, OnDestroy {
   subscription: Subscription | undefined
   playlistName: string
-  selectedPlaylist: Youtube['license']
+  selectedPlaylist: Youtube['playlists']
   selectedPlaylistIndex: number
 
   getSelectedLicense() {
@@ -75,7 +71,6 @@ export class PlaylistComponent implements OnInit, OnDestroy {
       this.componentToggleService.currentPlaylistName.subscribe(
         (playlistName: string) => {
           this.playlistName = playlistName
-          console.log(this.playlistName)
         }
       )
 
@@ -86,18 +81,19 @@ export class PlaylistComponent implements OnInit, OnDestroy {
         if (!res) {
           return
         }
-        res.find(
-          (playlist: Youtube) =>
-            (this.selectedPlaylist = playlist[`${this.playlistName}`])
-        )
-        this.selectedPlaylistIndex = res.findIndex(
-          (playlist: Youtube) => playlist[`${this.playlistName}`]
-        )
+        res.find((playlist: Youtube) => {
+          if (playlist.license === this.playlistName)
+            this.selectedPlaylist = playlist.playlists
+        })
+        res.findIndex((playlist: Youtube, index: number) => {
+          if (playlist.license === this.playlistName)
+            this.selectedPlaylistIndex = index
+        })
       })
   }
 
   goToVideoPlayer(id: string, index: number, name: string) {
-    this.componentToggleService.togglePlaylistComponent(name, false)
+    this.componentToggleService.togglePlaylistComponent('', '', false)
     this.componentToggleService.toggleVideoPlayerComponentOn(id, index, name)
   }
 

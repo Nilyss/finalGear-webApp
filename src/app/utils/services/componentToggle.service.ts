@@ -24,14 +24,18 @@ export class ComponentToggleService {
   public isPlaylistComponentVisible = new BehaviorSubject<boolean>(false)
   public currentPlaylistName = new BehaviorSubject<string>('')
 
+  public currentPlaylistId = new BehaviorSubject<string>('')
+
   currentPlaylistComponentVisibility =
     this.isPlaylistComponentVisible.asObservable()
 
-  togglePlaylistComponent(name: string, isVisible: boolean) {
+  togglePlaylistComponent(name: string, id: string, isVisible: boolean) {
     isVisible
       ? (this.currentPlaylistName.next(name),
+        this.currentPlaylistId.next(id),
         this.isPlaylistComponentVisible.next(true))
       : (this.currentPlaylistName.next(name),
+        this.currentPlaylistId.next(id),
         this.isPlaylistComponentVisible.next(false))
   }
 
