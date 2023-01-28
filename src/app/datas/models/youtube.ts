@@ -3,17 +3,15 @@ export class Youtube {
   _id: string
   playlists: [
     {
-      id: string
+      _id: string
       name: string
       url: string
-      episodes: [
-        {
-          name: string
-          url: string
-          duration: string
-          thumbnail: string
-        }
-      ]
+      episodes: {
+        name: string
+        url: string
+        duration: string
+        thumbnail: string
+      }[]
     }
   ]
 
@@ -22,17 +20,15 @@ export class Youtube {
     _id: string,
     playlists: [
       {
-        id: string
+        _id: string
         name: string
         url: string
-        episodes: [
-          {
-            name: string
-            url: string
-            duration: string
-            thumbnail: string
-          }
-        ]
+        episodes: {
+          name: string
+          url: string
+          duration: string
+          thumbnail: string
+        }[]
       }
     ]
   ) {

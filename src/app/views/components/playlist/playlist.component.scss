@@ -15,7 +15,9 @@
     flex-flow: column;
   }
   display: flex;
-  flex-flow: nowrap;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: center;
   gap: 2em;
 }
 

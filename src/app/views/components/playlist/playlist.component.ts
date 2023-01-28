@@ -33,7 +33,11 @@ import { YoutubeState } from '../../../datas/ngrx/controller/youtube/youtubeRedu
         >
           <li
             (click)="
-              goToVideoPlayer(playlist.id, selectedPlaylistIndex, playlist.name)
+              goToVideoPlayer(
+                playlist._id,
+                selectedPlaylistIndex,
+                playlist.name
+              )
             "
             class="selectedPlaylist__playlistsWrapper__playlist"
           >
@@ -44,7 +48,17 @@ import { YoutubeState } from '../../../datas/ngrx/controller/youtube/youtubeRedu
               class="selectedPlaylist__playlistsWrapper__playlist__imageWrapper"
             >
               <img
+                *ngIf="playlist._id !== '5a9b4b9b0f1c9d0014a5b2a1'"
                 [src]="playlist.episodes[0].thumbnail"
+                alt="Episode 1 thumbnail"
+                class="selectedPlaylist__playlistsWrapper__playlist__imageWrapper__image"
+              />
+              <img
+                *ngIf="
+                  playlist._id === '5a9b4b9b0f1c9d0014a5b2a1' &&
+                  playlist.episodes.length > 0
+                "
+                [src]="playlist.episodes?.[76].thumbnail"
                 alt="Episode 1 thumbnail"
                 class="selectedPlaylist__playlistsWrapper__playlist__imageWrapper__image"
               />
