@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core'
 import { DomSanitizer } from '@angular/platform-browser'
 
 // ********** RXJS **********
@@ -23,9 +23,9 @@ import { ComponentToggleService } from '../../../utils/services/componentToggle.
         <div class="youtubePlayer__titleWrapper">
           <h2 class="youtubePlayer__title">{{ requestedName }}</h2>
         </div>
-        <ul class="youtubePlayer__episodeWrapper">
+        <ul class="youtubePlayer__episodeWrapper" (scroll)="onScroll($event)">
           <li
-            *ngFor="let episode of requestedPlaylist; let i = index"
+            *ngFor="let episode of displayedEpisodes; let i = index"
             class="youtubePlayer__episodeWrapper__episode"
           >
             <div class="youtubePlayer__episodeWrapper__episode__titleWrapper">
@@ -63,6 +63,20 @@ import { ComponentToggleService } from '../../../utils/services/componentToggle.
   styleUrls: ['./video-player.component.scss'],
 })
 export class VideoPlayerComponent implements OnInit, OnDestroy {
+  @HostListener('window:scroll', ['$event']) onScroll(event) {
+    let scrollY = window.scrollY || window.pageYOffset
+    let bottom = document.body.offsetHeight - (scrollY + window.innerHeight)
+    if (bottom < 200) {
+      if (this.allEpisode.length === this.displayedEpisodes.length) return
+      this.displayedEpisodes = this.displayedEpisodes.concat(
+        this.allEpisode.slice(this.currentLength, this.currentLength + 5)
+      )
+      this.currentLength += 5
+    }
+  }
+
+  public currentLength = 0
+
   subscription: Subscription | undefined
 
   isYoutubeDatasLoaded: boolean
@@ -79,6 +93,10 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
   embedId: string | undefined
 
   safeUrls = []
+
+  displayedEpisodes = []
+
+  allEpisode = []
 
   // ***** GET REQUESTED ID  *****
 
@@ -100,17 +118,26 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
   // ********** GET REQUESTED VIDEO **********
 
   getRequestedVideo() {
-    if (!this.isYoutubeDatasLoaded) {
-      this.subscription = this.store
-        .select(YoutubeSelector.selectYoutubePlaylist)
-        .subscribe((youtubePlaylist: Youtube[]) => {
-          if (!youtubePlaylist) return
-          youtubePlaylist[this.requestedIndex].playlists.find((playlist) => {
-            if (playlist.name === this.requestedName)
-              this.requestedPlaylist = playlist.episodes
-          })
-        })
+    if (this.isYoutubeDatasLoaded) {
+      return
     }
+
+    this.subscription = this.store
+      .select(YoutubeSelector.selectYoutubePlaylist)
+      .subscribe((youtubePlaylist: Youtube[]) => {
+        if (!youtubePlaylist) return
+        const playlist = youtubePlaylist[this.requestedIndex].playlists.find(
+          (playlist) => playlist.name === this.requestedName
+        )
+        if (!playlist) return
+
+        this.requestedPlaylist =
+          playlist.episodes.length > 20
+            ? playlist.episodes.slice().reverse()
+            : playlist.episodes
+        this.allEpisode = this.requestedPlaylist
+        this.displayedEpisodes = this.allEpisode.slice(0, 10)
+      })
   }
 
   getEmbedUrl() {
