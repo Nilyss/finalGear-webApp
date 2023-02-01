@@ -63,19 +63,23 @@ import { ComponentToggleService } from '../../../utils/services/componentToggle.
   styleUrls: ['./video-player.component.scss'],
 })
 export class VideoPlayerComponent implements OnInit, OnDestroy {
-  @HostListener('window:scroll', ['$event']) onScroll(event) {
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event) {
     let scrollY = window.scrollY || window.pageYOffset
     let bottom = document.body.offsetHeight - (scrollY + window.innerHeight)
     if (bottom < 200) {
       if (this.allEpisode.length === this.displayedEpisodes.length) return
-      this.displayedEpisodes = this.displayedEpisodes.concat(
-        this.allEpisode.slice(this.currentLength, this.currentLength + 5)
+
+      const newEpisodes = this.allEpisode.slice(
+        this.currentLength,
+        this.currentLength + 5
       )
+
+      this.displayedEpisodes = this.displayedEpisodes.concat(newEpisodes)
       this.currentLength += 5
     }
   }
-
-  public currentLength = 0
+  private currentLength = 0
 
   subscription: Subscription | undefined
 
@@ -88,7 +92,6 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
   requestedName: string
 
   requestedVideo: string | undefined
-
   requestedPlaylist
   embedId: string | undefined
 
@@ -131,12 +134,16 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
         )
         if (!playlist) return
 
-        this.requestedPlaylist =
-          playlist.episodes.length > 20
-            ? playlist.episodes.slice().reverse()
-            : playlist.episodes
-        this.allEpisode = this.requestedPlaylist
-        this.displayedEpisodes = this.allEpisode.slice(0, 10)
+        if (playlist.episodes.length > 20) {
+          this.currentLength = 10
+          this.requestedPlaylist = playlist.episodes.slice().reverse()
+          this.allEpisode = this.requestedPlaylist
+          this.displayedEpisodes = this.allEpisode.slice(0, 10)
+        } else {
+          this.requestedPlaylist = playlist.episodes
+          this.allEpisode = this.requestedPlaylist
+          this.displayedEpisodes = this.allEpisode
+        }
       })
   }
 
