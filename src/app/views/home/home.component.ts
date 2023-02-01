@@ -38,7 +38,7 @@ import { FinalGearState } from '../../datas/ngrx/controller/finalGear/finalGearR
     </body>
   `,
   styles: [
-    '.body{overflow-x: hidden} .main {min-height: 34vh; background-color: #2b2a33}',
+    '.body{overflow-x: hidden} .main {min-height: 50vh; background-color: #2b2a33}',
   ],
 })
 export class HomeComponent implements OnInit, OnDestroy {
